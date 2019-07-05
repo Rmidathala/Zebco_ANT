@@ -1,0 +1,6 @@
+*.classpath
+/debug.log
+/InitScript.sh
+/Run Manager_Arka.xlsm
+/Run Manager_AllSameBrowser.xlsm
+/Results/
