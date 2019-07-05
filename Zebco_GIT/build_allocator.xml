@@ -1,9 +1,9 @@
-<project name="HelloWorld" basedir="." default="main">
+<project name="Zebco" basedir="." default="main">
 <!-- Please update the below path with Project path (Eclipse workspace Project path) -->
 	
 
 	<property name="tests.gui.dir" value="./" />
-	<property name="testset.name" value="Production Regression" />
+	<property name="testset.name" value="${bambooRunConfiguration}" />
 	
 	<property name="javalibs.dir" value="${tests.gui.dir}\supportlibraries\External_Jars" />
 	
