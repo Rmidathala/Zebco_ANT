@@ -311,6 +311,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	public void navigateToWriteAReviewPage() {
 		try {
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.writeAReviewLink), ProductDetailsPageObjects.writeAReviewLink.getObjectname());
+			Thread.sleep(2000);
 			if(commonFunction.isElementPresentContainsText(getPageElement(ProductDetailsPageObjects.titleWriteAReview), ProductDetailsPageObjects.titleWriteAReview.getObjectname(), "Write a Review")) {
 				report.updateTestLog("Verify User navigated to Write A Review Page",
 						"User is successfully navigated to Write A Review Page", Status.PASS);
@@ -502,6 +503,43 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 		
 		}catch(Exception e) {
 			report.updateTestLog("Validate Mini Cart Overlay", "Something went wrong!" + e.toString(), Status.FAIL);
+		}
+	}
+	public void navigateToShoppingCartPage() {
+		try {
+			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartbtnGoToCart), ProductDetailsPageObjects.miniCartbtnGoToCart.getObjectname());
+			if(commonFunction.isElementPresentContainsText(getPageElement(ShoppingCartPageObjects.titleShoppingCart), ShoppingCartPageObjects.titleShoppingCart.getObjectname(), "Shopping Cart")) {
+				report.updateTestLog("Verify user navigated to Shopping Cart",
+						"User Successfully navigated to Shopping Cart Page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify user navigated to Shopping Cart",
+						"User NOT navigated to Shopping Cart Page", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("Navigate To Shopping Cart Page", "Something went wrong!" + e.toString(), Status.FAIL);
+		}
+	}
+	
+	public void navigateToShoppingCartPageForSecondProduct() {
+		try {
+			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartbtnGoToCart), ProductDetailsPageObjects.miniCartbtnGoToCart.getObjectname());
+			if(commonFunction.isElementPresentContainsText(getPageElement(ShoppingCartPageObjects.titleShoppingCart), ShoppingCartPageObjects.titleShoppingCart.getObjectname(), "Shopping Cart")) {
+				report.updateTestLog("Verify user navigated to Shopping Cart",
+						"User Successfully navigated to Shopping Cart Page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify user navigated to Shopping Cart",
+						"User NOT navigated to Shopping Cart Page", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("Navigate To Shopping Cart Page", "Something went wrong!" + e.toString(), Status.FAIL);
+		}
+	}
+	public void validateDetailsTab() {
+		try {
+			
+		}catch(Exception e) {
+			
 		}
 	}
 }

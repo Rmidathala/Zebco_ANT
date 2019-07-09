@@ -15,6 +15,7 @@ import com.cognizant.framework.selenium.WebDriverUtil;
 
 import componentgroups.CommonFunctions;
 import pages.HomePageObjects;
+import pages.MyAccountPageObjects;
 
 
 public class HomePageComponents extends ReusableLibrary {
@@ -37,6 +38,26 @@ public class HomePageComponents extends ReusableLibrary {
 		WebDriverUtil webdriverutil = new WebDriverUtil(driver);
 		
 		private WebElement getPageElement(HomePageObjects pageEnum) {
+			WebElement element;
+			try {
+				element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
+						true);
+				if (element != null) {
+					System.out.println("Found the element: " + pageEnum.getObjectname());
+				return element;
+				}
+				else {
+					System.out.println("Element Not Found: "+pageEnum.getObjectname());
+					return null;
+				}
+			} catch (Exception e) {
+				report.updateTestLog("Home Page - get page element",
+						pageEnum.toString() + " object is not defined or found.", Status.FAIL);
+				return null;
+			}
+		}
+		
+		private WebElement getPageElement(MyAccountPageObjects pageEnum) {
 			WebElement element;
 			try {
 				element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
@@ -632,7 +653,7 @@ public class HomePageComponents extends ReusableLibrary {
 
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkCASupplyChainAct),
 						HomePageObjects.lnkCASupplyChainAct.getObjectname());
-				if (driver.getCurrentUrl().contains("/supply-chains-act")) {
+				if (driver.getCurrentUrl().contains("/supply-chain-act")) {
 					report.updateTestLog("Verify User navigated to CA Supply Chains Act Page",
 							"User is successfully navigated to CA Supply Chains Act  page", Status.PASS);
 				} else {
@@ -1073,6 +1094,25 @@ public class HomePageComponents extends ReusableLibrary {
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.mapArea), HomePageObjects.mapArea.getObjectname());
 			}catch(Exception e) {
 				report.updateTestLog("Navigate To Find A Retailer", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
+		
+		public void navigateToMyAccountPage() {
+			try {
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.iconAccount),
+						HomePageObjects.iconAccount.getObjectname());	
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkMyAccount),
+						HomePageObjects.lnkMyAccount.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.titleMyAccount), MyAccountPageObjects.titleMyAccount.getObjectname(), "My Account")) {
+					report.updateTestLog("Verify user navigated to My Account page",
+							"User is successfully Navigated to  My Account Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to  My Account Page",
+							"User is NOT Navigated to  My Account Page", Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Navigate To My Account Page", "Something went wrong!" + e.toString(),
 						Status.FAIL);
 			}
 		}
