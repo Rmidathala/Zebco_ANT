@@ -51,7 +51,7 @@ public class WebDriverFactory {
 
 		switch (browser) {
 		case CHROME:
-			// Takes the system proxy settings automatically
+				// Takes the system proxy settings automatically
 
 			System.setProperty("webdriver.chrome.driver", properties.getProperty("ChromeDriverPath"));
 
@@ -69,8 +69,13 @@ public class WebDriverFactory {
 			options.addArguments("--disable-default-apps");
 			options.addArguments("test-type=browser");
 			options.addArguments("disable-infobars");
-			
-
+			options.addArguments("start-maximized"); // open Browser in maximized mode
+			options.addArguments("disable-infobars"); // disabling infobars
+			options.addArguments("--disable-extensions"); // disabling extensions
+			options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+			options.addArguments("--no-sandbox"); // Bypass OS security model
+			options.addArguments("headless");
+			options.addArguments("window-size=1366x768");
 
 			// options.addArguments("--dns-prefetch-disable");
 			Map<String, Object> prefs = new HashMap<String, Object>();
@@ -82,22 +87,16 @@ public class WebDriverFactory {
 		case FIREFOX:
 			// Takes the system proxy settings automatically
 			System.setProperty("webdriver.gecko.driver", properties.getProperty("GeckoDriverPath"));
+			DesiredCapabilities capabilities_firefox = DesiredCapabilities.firefox();
+			//Set Firefox Headless mode as TRUE
+			FirefoxBinary firefoxBinary = new FirefoxBinary();
+			firefoxBinary.addCommandLineOptions("--headless");
+			capabilities_firefox.setCapability("marionette", true);
+			capabilities_firefox.setCapability("acceptInsecureCerts", true);
+			capabilities_firefox.setCapability("assume_untrusted_cert_issuer", true);
+			capabilities_firefox.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+			driver = new FirefoxDriver(capabilities_firefox);
 
-			// System.setProperty("webdriver.firefox.logfile","D:\\FirefoxLog.log");
-			// DesiredCapabilities capabilities = new DesiredCapabilities();
-			// DesiredCapabilities capabilities = getProxyCapabilities();
-			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-			capabilities.setCapability("marionette", true);
-			capabilities.setCapability("acceptInsecureCerts", true);
-			capabilities.setCapability("assume_untrusted_cert_issuer", true);
-			capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-			// capabilities.setCapability("specificationLevel", 1);
-			// capabilities.setCapability("firefox_binary","C:\\Users\\566479\\AppData\\Local\\Nightly\\firefox.exe");
-			// capabilities.setCapability("firefox_binary","C:\\Users\\566479\\AppData\\Local\\Mozilla
-			// Firefox\\firefox.exe");
-			driver = new FirefoxDriver(capabilities);
-
-			// driver = new FirefoxDriver();
 			break;
 
 		case GHOST_DRIVER:
