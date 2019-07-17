@@ -4,17 +4,15 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import supportlibraries.ReusableLibrary;
-import supportlibraries.ScriptHelper;
+import com.cognizant.craft.ReusableLibrary;
+import com.cognizant.craft.ScriptHelper;
 import com.cognizant.framework.Status;
 import com.cognizant.framework.selenium.WebDriverUtil;
 
 import componentgroups.CommonFunctions;
 import pages.CheckoutPageObjects;
-import pages.ProductDetailsPageObjects;
 import pages.ShoppingCartPageObjects;
 
 public class ShoppingCartPageComponents extends ReusableLibrary {
@@ -55,25 +53,7 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			return null;
 		}
 	}
-	private WebElement getPageElement(ProductDetailsPageObjects pageEnum) {
-		WebElement element;
-		try {
-			element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
-					true);
-			if (element != null) {
-				System.out.println("Found the element: " + pageEnum.getObjectname());
-			return element;
-			}
-			else {
-				System.out.println("Element Not Found: "+pageEnum.getObjectname());
-				return null;
-			}
-		} catch (Exception e) {
-			report.updateTestLog("Home Page - get page element",
-					pageEnum.toString() + " object is not defined or found.", Status.FAIL);
-			return null;
-		}
-	}
+	
 	private WebElement getPageElement(CheckoutPageObjects pageEnum) {
 		WebElement element;
 		try {
@@ -264,29 +244,4 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			
 		}
 	}
-	public void clearShoppingCartIfNotEmpty() {
-		try {
-			if(webdriverutil.objectExists(By.xpath(ShoppingCartPageObjects.itemCountOnMiniCart.getProperty()))) {
-				commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
-				commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartbtnGoToCart), ProductDetailsPageObjects.miniCartbtnGoToCart.getObjectname());
-			
-			List<WebElement> removeBtns = commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct.getProperty(), ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString());
-			int i=1;
-			for(WebElement removeBtn : removeBtns) {
-				commonFunction.clickIfElementPresent(removeBtn, "Shopping Cart Page - Remove Product #"+i);
-				i++;
-				if(i<removeBtns.size()) {
-				removeBtns = commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct.getProperty(), ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString());
-				}
-			}
-			}else {
-				report.updateTestLog("Empty Shopping Cart",
-						"Shopping Cart is already Empty", Status.DONE);
-			}
-		}catch(Exception e) {
-			report.updateTestLog("Empty Shopping Cart", "Something went wrong!" + e.toString(),
-					Status.FAIL);
-		}
-	}
-
 }

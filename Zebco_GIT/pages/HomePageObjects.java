@@ -4,6 +4,7 @@ import static pages.ObjectLocator.*;
 public enum HomePageObjects implements PageObjects {
 	
 	zeboLogo("//strong[@class='logo']/img",XPATH,"Home Page - Zebco Logo"),
+	zebcoLogoSTG("//a[@class='logo']/img",XPATH,"Home Page - Zebco Logo"),
 	
 	lnkHeaderCombos("//span[text()='Combos']",XPATH,"Home Page - Header link - Comboss"),
 	lnkHeaderReels("//span[text()='Reels']",XPATH,"Home Page - Header link - Reels"),
@@ -157,9 +158,7 @@ public enum HomePageObjects implements PageObjects {
 	lblFirstStoreName("(//div[@class='location_header'])[1]",XPATH,"Store Locator Page - Store Name"),
 	mapArea("//div[@class='amlocator_mapblock']",XPATH,"Store Locator Page - Google Map "),
 	
-	//logged in
-	iconAccount("//span[@class='action toggle active']",XPATH,"Home Page - Header - Account icon"),
-	lnkMyAccount("//div[@class='customer-menu']/ul/li[1]/a",XPATH,"Home Page - Header - Account - My Account link"),
+	
 	;
 
 	String strProperty = "";

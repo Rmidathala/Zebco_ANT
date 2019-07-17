@@ -7,8 +7,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import supportlibraries.ReusableLibrary;
-import supportlibraries.ScriptHelper;
+import com.cognizant.craft.ReusableLibrary;
+import com.cognizant.craft.ScriptHelper;
 import com.cognizant.framework.Status;
 import com.cognizant.framework.selenium.WebDriverUtil;
 
@@ -127,10 +127,9 @@ public class ProductListingPageComponents extends ReusableLibrary {
 			List<WebElement> productRatings = commonFunction.getElementsByProperty(
 					ProductListingPageObjects.productRatings.getProperty(),
 					ProductListingPageObjects.productRatings.getLocatorType().toString());
-			List<WebElement> productViewDetails = commonFunction.getElementsByProperty(
+			List<WebElement> productViewDetails =commonFunction.getElementsByProperty(
 					ProductListingPageObjects.btnproductViewDetails.getProperty(),
-					ProductListingPageObjects.btnproductViewDetails.getLocatorType().toString());
-
+					ProductListingPageObjects.btnproductViewDetails.getLocatorType().toString());;
 			for (int i = 0; i < products.size(); i++) {
 				commonFunction.verifyIfElementIsPresent(products.get(i), "Product#: " + i);
 				commonFunction.verifyIfElementIsPresent(productImages.get(i), "Product Image#: " + i);
@@ -160,6 +159,56 @@ public class ProductListingPageComponents extends ReusableLibrary {
 		}
 	}
 
+	public void validateProductInProductListingPageSTG() {
+		try {
+			List<WebElement> products = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.products.getProperty(),
+					ProductListingPageObjects.products.getLocatorType().toString());
+			List<WebElement> productImages = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.productImage.getProperty(),
+					ProductListingPageObjects.productImage.getLocatorType().toString());
+			List<WebElement> productItemLinks = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.productItemLink.getProperty(),
+					ProductListingPageObjects.productItemLink.getLocatorType().toString());
+			List<WebElement> productPrices = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.productPrice.getProperty(),
+					ProductListingPageObjects.productPrice.getLocatorType().toString());
+			List<WebElement> productRatings = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.productRatings.getProperty(),
+					ProductListingPageObjects.productRatings.getLocatorType().toString());
+			List<WebElement> productViewDetails=commonFunction.getElementsByProperty(
+					ProductListingPageObjects.btnproductViewDetailsSTG.getProperty(),
+					ProductListingPageObjects.btnproductViewDetailsSTG.getLocatorType().toString());
+			System.out.println(productViewDetails.size());
+			for (int i = 0; i < products.size()-5; i++) {
+				commonFunction.verifyIfElementIsPresent(products.get(i), "Product#: " + i);
+				commonFunction.verifyIfElementIsPresent(productImages.get(i), "Product Image#: " + i);
+				commonFunction.verifyIfElementIsPresent(productItemLinks.get(i), "Product Item Link#: " + i);
+				commonFunction.verifyIfElementIsPresent(productPrices.get(i), "Product Price of Product#: " + i);
+				commonFunction.verifyIfElementIsPresent(productRatings.get(i), "Product Rating of Product#: " + i);
+				commonFunction.scrollIntoView(products.get(i));
+				commonFunction.mouseOver(products.get(i), "Product#: " + i);
+				commonFunction.verifyIfElementIsPresent(productViewDetails.get(i),
+						"Product - View Details of Product#: " + i);
+			}
+			commonFunction.clickIfElementPresent(getPageElement(ProductListingPageObjects.btnShowAllCombos),
+					ProductListingPageObjects.btnShowAllCombos.getObjectname());
+			Thread.sleep(3000);
+			List<WebElement> productsAfterShowAll = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.products.getProperty(),
+					ProductListingPageObjects.products.getLocatorType().toString());
+			if (products.size() < productsAfterShowAll.size()) {
+				report.updateTestLog("Verify Show All Combos button on Product Listing Page",
+						"Show All Button on Product Listing Page is working fine", Status.PASS);
+			} else {
+				report.updateTestLog("Verify Show All Combos button on Product Listing Page",
+						"Show All Combos Button on the Product Listing Page is not Working", Status.FAIL);
+			}
+		} catch (Exception e) {
+			report.updateTestLog("Validate Product Listing Page", "Something went wrong!" + e.toString(), Status.FAIL);
+		}
+	}
+	
 	public void navigateToGroupedProduct() {
 		try {
 			
@@ -184,9 +233,16 @@ public class ProductListingPageComponents extends ReusableLibrary {
 			List<WebElement> products = commonFunction.getElementsByProperty(
 					ProductListingPageObjects.products.getProperty(),
 					ProductListingPageObjects.products.getLocatorType().toString());
-			List<WebElement> productViewDetails = commonFunction.getElementsByProperty(
+			List<WebElement> productViewDetails;
+			if(driver.getCurrentUrl().contains("mcstaging")) {
+				productViewDetails = commonFunction.getElementsByProperty(
+						ProductListingPageObjects.btnproductViewDetailsSTG.getProperty(),
+						ProductListingPageObjects.btnproductViewDetailsSTG.getLocatorType().toString());
+			}else {
+			productViewDetails = commonFunction.getElementsByProperty(
 					ProductListingPageObjects.btnproductViewDetails.getProperty(),
 					ProductListingPageObjects.btnproductViewDetails.getLocatorType().toString());
+			}
 			commonFunction.scrollIntoView(products.get(0));
 			commonFunction.mouseOver(products.get(0), "Product#: " + 1);
 			commonFunction.clickIfElementPresent(productViewDetails.get(0), "Product - View Details of Product#: " + 1);
@@ -209,9 +265,16 @@ public class ProductListingPageComponents extends ReusableLibrary {
 			List<WebElement> products = commonFunction.getElementsByProperty(
 					ProductListingPageObjects.products.getProperty(),
 					ProductListingPageObjects.products.getLocatorType().toString());
-			List<WebElement> productViewDetails = commonFunction.getElementsByProperty(
+			List<WebElement> productViewDetails;
+			if(driver.getCurrentUrl().contains("mcstaging")) {
+				productViewDetails = commonFunction.getElementsByProperty(
+						ProductListingPageObjects.btnproductViewDetailsSTG.getProperty(),
+						ProductListingPageObjects.btnproductViewDetailsSTG.getLocatorType().toString());
+			}else {
+			productViewDetails = commonFunction.getElementsByProperty(
 					ProductListingPageObjects.btnproductViewDetails.getProperty(),
 					ProductListingPageObjects.btnproductViewDetails.getLocatorType().toString());
+			}
 			commonFunction.scrollIntoView(products.get(1));
 			commonFunction.mouseOver(products.get(1), "Product#: " + 2);
 			commonFunction.clickIfElementPresent(productViewDetails.get(1), "Product - View Details of Product#: " + 2);

@@ -5,8 +5,8 @@ import java.time.ZoneId;
 
 import org.openqa.selenium.WebElement;
 
-import supportlibraries.ReusableLibrary;
-import supportlibraries.ScriptHelper;
+import com.cognizant.craft.ReusableLibrary;
+import com.cognizant.craft.ScriptHelper;
 import com.cognizant.framework.Status;
 import com.cognizant.framework.selenium.WebDriverUtil;
 
@@ -121,13 +121,19 @@ public class CheckOutPageComponents extends ReusableLibrary {
 			String expMonth = dataTable.getData("General_Data","ExpMonth");
 			String expYear = dataTable.getData("General_Data","ExpYear");
 			String cvv = dataTable.getData("General_Data","CVV");
-			
+			if(driver.getCurrentUrl().contains("mcstaging")) {
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(CheckoutPageObjects.checkBoxCreditCard), CheckoutPageObjects.checkBoxCreditCard.getObjectname());
+			}
 			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxCreditCard), creditCardNumber, CheckoutPageObjects.txtBoxCreditCard.getObjectname());
 			commonFunction.selectAnyElementByValue(getPageElement(CheckoutPageObjects.drpDownExpiryMonth), expMonth, CheckoutPageObjects.drpDownExpiryMonth.getObjectname());
 			commonFunction.selectAnyElementByValue(getPageElement(CheckoutPageObjects.drpDonwExpiryYear), expYear, CheckoutPageObjects.drpDonwExpiryYear.getObjectname());
 			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxCVV), cvv, CheckoutPageObjects.txtBoxCVV.getObjectname());
+			if(driver.getCurrentUrl().contains("mcstaging")) {
+				commonFunction.verifyIfElementIsPresent(getPageElement(CheckoutPageObjects.btnPlaceOrderSTG), CheckoutPageObjects.btnPlaceOrderSTG.getObjectname());
+			}else {
 			commonFunction.verifyIfElementIsPresent(getPageElement(CheckoutPageObjects.btnPlaceOrder), CheckoutPageObjects.btnPlaceOrder.getObjectname());
-		}catch(Exception e) {
+			}
+			}catch(Exception e) {
 			report.updateTestLog("Enter Payment Details and Place Order", "Something went wrong!" + e.toString(),
 					Status.FAIL);
 		}

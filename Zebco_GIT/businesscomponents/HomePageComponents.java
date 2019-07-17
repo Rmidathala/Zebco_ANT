@@ -8,14 +8,13 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-import supportlibraries.ReusableLibrary;
-import supportlibraries.ScriptHelper;
+import com.cognizant.craft.ReusableLibrary;
+import com.cognizant.craft.ScriptHelper;
 import com.cognizant.framework.Status;
 import com.cognizant.framework.selenium.WebDriverUtil;
 
 import componentgroups.CommonFunctions;
 import pages.HomePageObjects;
-import pages.MyAccountPageObjects;
 
 
 public class HomePageComponents extends ReusableLibrary {
@@ -38,26 +37,6 @@ public class HomePageComponents extends ReusableLibrary {
 		WebDriverUtil webdriverutil = new WebDriverUtil(driver);
 		
 		private WebElement getPageElement(HomePageObjects pageEnum) {
-			WebElement element;
-			try {
-				element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
-						true);
-				if (element != null) {
-					System.out.println("Found the element: " + pageEnum.getObjectname());
-				return element;
-				}
-				else {
-					System.out.println("Element Not Found: "+pageEnum.getObjectname());
-					return null;
-				}
-			} catch (Exception e) {
-				report.updateTestLog("Home Page - get page element",
-						pageEnum.toString() + " object is not defined or found.", Status.FAIL);
-				return null;
-			}
-		}
-		
-		private WebElement getPageElement(MyAccountPageObjects pageEnum) {
 			WebElement element;
 			try {
 				element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
@@ -109,7 +88,7 @@ public class HomePageComponents extends ReusableLibrary {
 				// Validate Combos link
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderCombos),
 						HomePageObjects.lnkHeaderCombos.getObjectname());
-				if (driver.getCurrentUrl().contains("/fishing-combos")) {
+				if (driver.getCurrentUrl().contains("/fishing-combos")|| driver.getCurrentUrl().contains("/combos")) {
 					report.updateTestLog("Verify Navigation Menu link -Combos",
 							"User is successfully Navigated to Combos Page", Status.PASS);
 				} else {
@@ -121,7 +100,7 @@ public class HomePageComponents extends ReusableLibrary {
 				// Validate Reels link
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderReels),
 						HomePageObjects.lnkHeaderReels.getObjectname());
-				if (driver.getCurrentUrl().contains("/fishing-reels")) {
+				if (driver.getCurrentUrl().contains("/fishing-reels") || driver.getCurrentUrl().contains("/reels")) {
 					report.updateTestLog("Verify Navigation Menu link -Reels",
 							"User is successfully Navigated to Reels Page", Status.PASS);
 				} else {
@@ -133,7 +112,7 @@ public class HomePageComponents extends ReusableLibrary {
 				// Validate Rods link
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderRods),
 						HomePageObjects.lnkHeaderRods.getObjectname());
-				if (driver.getCurrentUrl().contains("/fishing-rods")) {
+				if (driver.getCurrentUrl().contains("/fishing-rods") || driver.getCurrentUrl().contains("/rods")) {
 					report.updateTestLog("Verify Navigation Menu link -Rods",
 							"User is successfully Navigated to Fising Rods Page", Status.PASS);
 				} else {
@@ -653,7 +632,7 @@ public class HomePageComponents extends ReusableLibrary {
 
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkCASupplyChainAct),
 						HomePageObjects.lnkCASupplyChainAct.getObjectname());
-				if (driver.getCurrentUrl().contains("/supply-chain-act")) {
+				if (driver.getCurrentUrl().contains("/supply-chains-act")) {
 					report.updateTestLog("Verify User navigated to CA Supply Chains Act Page",
 							"User is successfully navigated to CA Supply Chains Act  page", Status.PASS);
 				} else {
@@ -717,7 +696,7 @@ public class HomePageComponents extends ReusableLibrary {
 			try {
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderCombos),
 						HomePageObjects.lnkHeaderCombos.getObjectname());
-				if (driver.getCurrentUrl().contains("/fishing-combos")) {
+				if (driver.getCurrentUrl().contains("/fishing-combos") || driver.getCurrentUrl().contains("/combos")) {
 					report.updateTestLog("Verify Navigation Menu link -Combos",
 							"User is successfully Navigated to Combos Page", Status.PASS);
 				} else {
@@ -729,11 +708,31 @@ public class HomePageComponents extends ReusableLibrary {
 						Status.FAIL);
 			}
 		}
-		
+		public void navigateToReels() {
+			try {
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderReels),
+						HomePageObjects.lnkHeaderReels.getObjectname());
+				if (driver.getCurrentUrl().contains("/reels")) {
+					report.updateTestLog("Verify Navigation Menu link -Combos",
+							"User is successfully Navigated to Combos Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation Menu link -Combos",
+							"User is NOT Navigated to Combos Page", Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Navigate to Combos Page", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
 		public void validateZebcoLogo() {
 			try {
+				if(driver.getCurrentUrl().contains("mcstaging")) {
+					commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.zebcoLogoSTG),
+							HomePageObjects.zebcoLogoSTG.getObjectname());
+				} else {
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.zeboLogo),
 						HomePageObjects.zeboLogo.getObjectname());
+				}
 			}catch(Exception e) {
 				report.updateTestLog("Home Page -Validate Zebco Icon", "Something went wrong!" + e.toString(),
 						Status.FAIL);
@@ -1094,25 +1093,6 @@ public class HomePageComponents extends ReusableLibrary {
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.mapArea), HomePageObjects.mapArea.getObjectname());
 			}catch(Exception e) {
 				report.updateTestLog("Navigate To Find A Retailer", "Something went wrong!" + e.toString(),
-						Status.FAIL);
-			}
-		}
-		
-		public void navigateToMyAccountPage() {
-			try {
-				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.iconAccount),
-						HomePageObjects.iconAccount.getObjectname());	
-				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkMyAccount),
-						HomePageObjects.lnkMyAccount.getObjectname());	
-				if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.titleMyAccount), MyAccountPageObjects.titleMyAccount.getObjectname(), "My Account")) {
-					report.updateTestLog("Verify user navigated to My Account page",
-							"User is successfully Navigated to  My Account Page", Status.PASS);
-				} else {
-					report.updateTestLog("Verify Navigation to  My Account Page",
-							"User is NOT Navigated to  My Account Page", Status.FAIL);
-				}
-			}catch(Exception e) {
-				report.updateTestLog("Navigate To My Account Page", "Something went wrong!" + e.toString(),
 						Status.FAIL);
 			}
 		}

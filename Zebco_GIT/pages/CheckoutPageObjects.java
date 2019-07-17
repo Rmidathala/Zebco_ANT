@@ -24,12 +24,13 @@ public enum CheckoutPageObjects  implements PageObjects {
 	btnNext("//button[@class='button action continue primary']",XPATH,"Shipping Address Page - Next Button"),
 	
 	// Payment page
-	
+	checkBoxCreditCard("//input[@id='chcybersource']",XPATH,"Payment Page- Check box Credit Card"),
 	txtBoxCreditCard("//input[@title='Credit Card Number']",XPATH,"Payment Page - Credit Card Number text box"),
 	drpDownExpiryMonth("//select[@name='payment[cc_exp_month]']",XPATH,"Payment Page - Expiry Month Drop Down"),
 	drpDonwExpiryYear("//select[@name='payment[cc_exp_year]']",XPATH,"Payment page - Expiry Year Drop Down"),
 	txtBoxCVV("//input[@name='payment[cc_cid]']",XPATH,"Payment Page - CVV text Box"),
 	btnPlaceOrder("//button[@title='Place Order']",XPATH,"Payment Page - Place Orer Button"),
+	btnPlaceOrderSTG("(//button[@title='Place Order'])[2]",XPATH,"Payment Page - Place Orer Button"),
 	
 	titlePaymentMethod("//div[@class='payment-group']/div[@class='step-title']",XPATH,"Payment Page - title Payment Method"),
 	

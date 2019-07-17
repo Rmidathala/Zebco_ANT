@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 
-import supportlibraries.ReusableLibrary;
-import supportlibraries.ScriptHelper;
+import com.cognizant.craft.ReusableLibrary;
+import com.cognizant.craft.ScriptHelper;
 import com.cognizant.framework.Status;
 import com.cognizant.framework.selenium.WebDriverUtil;
 
@@ -127,6 +127,43 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			report.updateTestLog("Validate Simple Product", "Something went wrong!" + e.toString(), Status.FAIL);
 		}
 	}
+	
+	
+	public void validateSimpleProduct_STG() {
+		try {
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainImage), ProductDetailsPageObjects.productMainImage.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainName), ProductDetailsPageObjects.productMainName.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainStarRating), ProductDetailsPageObjects.productMainStarRating.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productRatingInNumber), ProductDetailsPageObjects.productRatingInNumber.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.ProductReviewCountlink), ProductDetailsPageObjects.ProductReviewCountlink.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.writeAReviewLink), ProductDetailsPageObjects.writeAReviewLink.getObjectname());
+			
+			
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.viewStoreLocationlink), ProductDetailsPageObjects.viewStoreLocationlink.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productPrice), ProductDetailsPageObjects.productPrice.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productDescriptionSTG), ProductDetailsPageObjects.productDescriptionSTG.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productModels), ProductDetailsPageObjects.productModels.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantitylabel), ProductDetailsPageObjects.quantitylabel.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantityDecrementor), ProductDetailsPageObjects.quantityDecrementor.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productQuantity), ProductDetailsPageObjects.productQuantity.getObjectname());
+			
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantityIncrementor), ProductDetailsPageObjects.quantityIncrementor.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.btnAddToCart), ProductDetailsPageObjects.btnAddToCart.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.lnkWishList), ProductDetailsPageObjects.lnkWishList.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.lnkCompare), ProductDetailsPageObjects.lnkCompare.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.facebookIcon), ProductDetailsPageObjects.facebookIcon.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.twitterIcon), ProductDetailsPageObjects.twitterIcon.getObjectname());
+			
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.sendMailIcon), ProductDetailsPageObjects.sendMailIcon.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.lnkReturnPolicy), ProductDetailsPageObjects.lnkReturnPolicy.getObjectname());
+			
+		}catch(Exception e) {
+			report.updateTestLog("Validate Simple Product", "Something went wrong!" + e.toString(), Status.FAIL);
+		}
+	}
+	
+	
+	
 	
 	public void validateGroupedProduct() {
 		try {
@@ -311,7 +348,6 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	public void navigateToWriteAReviewPage() {
 		try {
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.writeAReviewLink), ProductDetailsPageObjects.writeAReviewLink.getObjectname());
-			Thread.sleep(2000);
 			if(commonFunction.isElementPresentContainsText(getPageElement(ProductDetailsPageObjects.titleWriteAReview), ProductDetailsPageObjects.titleWriteAReview.getObjectname(), "Write a Review")) {
 				report.updateTestLog("Verify User navigated to Write A Review Page",
 						"User is successfully navigated to Write A Review Page", Status.PASS);
@@ -505,6 +541,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			report.updateTestLog("Validate Mini Cart Overlay", "Something went wrong!" + e.toString(), Status.FAIL);
 		}
 	}
+	
 	public void navigateToShoppingCartPage() {
 		try {
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
@@ -533,13 +570,6 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			}
 		}catch(Exception e) {
 			report.updateTestLog("Navigate To Shopping Cart Page", "Something went wrong!" + e.toString(), Status.FAIL);
-		}
-	}
-	public void validateDetailsTab() {
-		try {
-			
-		}catch(Exception e) {
-			
 		}
 	}
 }

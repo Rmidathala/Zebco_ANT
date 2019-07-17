@@ -63,7 +63,6 @@ public enum MyAccountPageObjects implements PageObjects {
 	txtBoxStreetAddressLine1("street_1",ID,"My Account Page - Add new Address Section - Text Box - Street Address Line 1"),
 	txtBoxCity("city",ID,"My Account Page - Add New Address Section - Text Box - City"),
 	drpDownState("region_id",ID,"My Account Page- Add new Address section - Drop Down - State"),
-	txtBoxZipCode("//input[@id='zip']",XPATH,"My Account Page - Add New Address Section - Zip code Text Box"),
 	btnSaveAddress("//button[@title='Save Address']",XPATH,"My Account Page - Add New Address Section - Button Save Address"),
 	msgNoAdditionalAddressEntry("//p[@class='empty']",XPATH,"My Account Page -Addtional Address Msg"),
 	lnkDeleteAddress("//a[@class='action delete']",XPATH,"My Account Page - Add New Address Section - Addtional Address - Delete Address link"),
@@ -75,27 +74,7 @@ public enum MyAccountPageObjects implements PageObjects {
 	btnAddToCart("//div[@class='actions-primary']/button[@title='Add to Cart']",XPATH,"My Account Page - Wish List Section - Button - Add To Cart"),
 	lnkEditProduct("//a[@class='action edit']",XPATH,"My Account Page - Wish list section - Product - Link Edit"),
 	lnkRemoveItem("//a[@title='Remove Item']",XPATH,"My Account Page - Wish List Section - Product Link - Remove Item"),	
-	txtBoxQuantity("//input[@class='input-text qty']",XPATH,"My Account Page - Wish List Section - Text Box - Quantity"),
-	emptyWishListMsg("//div[@class='message info empty']/span",XPATH,"My Account Page - Wish List section - Message: You have no items in your wish list."),
-	btnUpdateWishList("//button[@title='Update Wish List']",XPATH,"My Account Page - Update Wish List button"),
-	btnShareWishList("//button[@title='Share Wish List']",XPATH,"My Account Page - Share Wish List button"),
-	btnAddAllToCart("//button[@title='Add All to Cart']",XPATH,"My Account Page - Add All To Cart Button"),
-	// Wish List Sharing page
-	lblWishListSharing("//h1/span",XPATH,"My Account Page - Wish List Sharing - label - Wish List Sharing"),
-	txtAreaEmails("email_address",ID,"My Account Page - wish List Sharing - Text Area - Emails"),
-	txtAreaMessage("//textarea[@id='message']",XPATH,"My Account Page - Wish List Sharing - Text Area - Message"),
-	msgSuccessShareWishList("//div[@class='message-success success message']/div",XPATH,"My Account Page - Wish List Sharing - Success message - Your wish list has been shared."),
-	// Account Information Page
-	chkBoxChangeMail("//input[@id='change-email']",XPATH,"My Account Page - Account Information - Check box - Change Mail"),
-	chkBoxChangePassword("//input[@id='change-password']",XPATH,"My Account Page - Account Information - Check Box - Change Password"),
-	txtBoxEmail("//input[@id='email']",XPATH,"My Account Page - Account Information - Email Text Box"),
 	
-	btnSaveAddressOnVerifyAddressOverlay("//button[@class='action-primary action primary']",XPATH,"My Account Page - Verify Address Overlay - Save Address button"),
-	// Newletter
-	lblNewsLetter("//h1/span",XPATH,"My Account Page - Newsletter page - label - Newsletter"),
-	chekBoxGeneralSubscription("//input[@id='subscription']",XPATH,"My Account Page  - News Letter - Checkbox - General Subscription"),
-	btnSavenewsletterSubscription("//button[@title='Save']",XPATH,"My Account Page - Newsletter Subscription - Save Button"),
-	msgSuccessNewsletterSubscription("//div[@class='message-success success message']/div",XPATH,"My Account page - success message for changes in newsletter subscription"),
 	;
 
 	String strProperty = "";

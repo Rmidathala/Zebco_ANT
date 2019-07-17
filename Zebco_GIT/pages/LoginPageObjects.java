@@ -15,7 +15,6 @@ public enum LoginPageObjects implements PageObjects {
 	txtBoxEmailNewCustomerPage("email_address",ID,"Create New Customer Account Page - Text Box - Email"),
 	txtBoxPasswordNewCustomerPage("//input[@id='password']",ID,"Create New Customer Account Page - Text Box - Password"),
 	txtBoxConfirmPassword("password-confirmation",ID,"Create New Customer Account Page - Text Box - Confirm Password"),
-	
 	;
 
 	String strProperty = "";

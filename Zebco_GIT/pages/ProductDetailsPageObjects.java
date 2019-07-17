@@ -15,6 +15,7 @@ public enum ProductDetailsPageObjects implements PageObjects{
 	viewStoreLocationlink("//a[text()='View Store Locations']",XPATH,"Product Details Page - View Store Location link"),
 	productPrice("//span[@class='price-container tax weee']/span",XPATH,"Product Details page - Product Price in $"),
 	productDescription("//div[@class='description']/p",XPATH,"Product Details page - Product Description"),
+	productDescriptionSTG("//div[@class='description']",XPATH,"Product Details page - Product Description"),
 	
 	productModels("//div[contains(@id,'grouped-pdp-simple')]",XPATH,"Product Details Page - Product Models"),
 	quantitylabel("//label[@for='qty']",XPATH,"Product Details Page - Label - Quantity"),
@@ -22,12 +23,12 @@ public enum ProductDetailsPageObjects implements PageObjects{
 	productQuantity("//input[@title='Quantity']",XPATH,"Product Details Page - Product Quantity"),
 	quantityIncrementor("qty-incrementor",ID,"Product Details Page - Product Incrementor"),
 	btnAddToCart("//div[@class='actions']/button[@title='Add to Cart']",XPATH,"Product Details Page - Button Add to Cart"),
-	msgProductAdded("//div[@class='message-success success message']/div",XPATH,"Product Details Page - Product Added to Cart Message"),
+	msgProductAdded("//div[@role='alert']/div/div",XPATH,"Product Details Page - Product Added to Cart Message"),
 	
 	lnkWishList("//a[@data-action='add-to-wishlist']",XPATH,"Product Details Page - Link - Wish List"),
-	msgProductAddedtoWishList("//div[@class='message-success success message']/div",XPATH,"Product Details page - Message - Product Added to Wish List"),
+	msgProductAddedtoWishList("//div[@role='alert']/div/div",XPATH,"Product Details page - Message - Product Added to Wish List"),
 	lnkCompare("//a[@data-role='add-to-links']",XPATH,"Product Details Page - Link - Wish List"),
-	msgProductAddedtoCompare("//div[@class='message-success success message']/div",XPATH,"Product Details page - Message - Product Added to Compare"),
+	msgProductAddedtoCompare("//div[@role='alert']/div/div",XPATH,"Product Details page - Message - Product Added to Compare"),
 	// Share section
 	facebookIcon("//a[@title='Facebook']",XPATH,"Product Details Page - Share section - Facebook Icon"),
 	twitterIcon("//a[@title='Twitter']",XPATH,"Product Details Page - Share Section - Twitter Icon"),

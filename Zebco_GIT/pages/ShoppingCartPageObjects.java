@@ -24,7 +24,7 @@ public enum ShoppingCartPageObjects implements PageObjects {
 	btnremoveProduct("//div[@class='actions-toolbar']/a[@title='Remove item']",XPATH,"Shopping Cart Page - Button - Remove the Product"),
 	lnkMoveToWishList("//div[@class='actions-toolbar-row']/a[1]",XPATH,"Shopping Cart Page - Link - Move To Wish List"),
 	btnUpdateShoppingCart("//button[@title='Update Shopping Cart']",XPATH,"Shopping Cart Page - Shopping Cart Table - Button - Update Shopping Cart"),
-	itemCountOnMiniCart("//a[@title='Link to Mini Cart']/span[@class='counter qty']/span[1]",XPATH,"Mini Cart - Items added to cart"),
+	
 	msgProdutctMovedToWishList("//div[@role='alert']/div/div",XPATH,"Shopping Cart Page - Message - Product Moved to Wishlist"),
 	
 	// Summary section
