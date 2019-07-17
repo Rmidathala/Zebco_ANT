@@ -5,8 +5,8 @@ import java.time.ZoneId;
 
 import org.openqa.selenium.WebElement;
 
-import com.cognizant.craft.ReusableLibrary;
-import com.cognizant.craft.ScriptHelper;
+import supportlibraries.ReusableLibrary;
+import supportlibraries.ScriptHelper;
 import com.cognizant.framework.Status;
 import com.cognizant.framework.selenium.WebDriverUtil;
 

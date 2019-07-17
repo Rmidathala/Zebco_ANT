@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.android.dx.dex.code.CatchBuilder;
 import com.google.common.base.Function;
 
 import org.openqa.selenium.TimeoutException;
