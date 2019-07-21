@@ -205,6 +205,46 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			report.updateTestLog("Validate Grouped Product", "Something went wrong!" + e.toString(), Status.FAIL);
 		}
 	}
+	
+	public void validateGroupedProduct_STG() {
+		try {
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainImage), ProductDetailsPageObjects.productMainImage.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainName), ProductDetailsPageObjects.productMainName.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainImage), ProductDetailsPageObjects.productMainImage.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainStarRating), ProductDetailsPageObjects.productMainStarRating.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productRatingInNumber), ProductDetailsPageObjects.productRatingInNumber.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.ProductReviewCountlink), ProductDetailsPageObjects.ProductReviewCountlink.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.writeAReviewLink), ProductDetailsPageObjects.writeAReviewLink.getObjectname());
+			
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.askAQuestionLink), ProductDetailsPageObjects.askAQuestionLink.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.viewStoreLocationlink), ProductDetailsPageObjects.viewStoreLocationlink.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productPrice), ProductDetailsPageObjects.productPrice.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productDescription), ProductDetailsPageObjects.productDescription.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productModels), ProductDetailsPageObjects.productModels.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantitylabel), ProductDetailsPageObjects.quantitylabel.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantityDecrementor), ProductDetailsPageObjects.quantityDecrementor.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productQuantity), ProductDetailsPageObjects.productQuantity.getObjectname());
+			List<WebElement> productModels = commonFunction.getElementsByProperty(ProductDetailsPageObjects.productModels.getProperty(), ProductDetailsPageObjects.productModels.getLocatorType().toString());
+			int i=1;
+			for(WebElement model : productModels) {
+				commonFunction.verifyIfElementIsPresent(model, "Model #"+i);
+				i++;
+			}
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantityIncrementor), ProductDetailsPageObjects.quantityIncrementor.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.btnAddToCart), ProductDetailsPageObjects.btnAddToCart.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.lnkWishList), ProductDetailsPageObjects.lnkWishList.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.lnkCompare), ProductDetailsPageObjects.lnkCompare.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.facebookIcon), ProductDetailsPageObjects.facebookIcon.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.twitterIcon), ProductDetailsPageObjects.twitterIcon.getObjectname());
+			
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.sendMailIcon), ProductDetailsPageObjects.sendMailIcon.getObjectname());
+			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.lnkReturnPolicy), ProductDetailsPageObjects.lnkReturnPolicy.getObjectname());
+			
+		}catch(Exception e) {
+			report.updateTestLog("Validate Grouped Product", "Something went wrong!" + e.toString(), Status.FAIL);
+		}
+	}
+	
 	public void addProductToWishListFromProductDetailsPage() {
 		try {
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.lnkWishList), ProductDetailsPageObjects.lnkWishList.getObjectname());

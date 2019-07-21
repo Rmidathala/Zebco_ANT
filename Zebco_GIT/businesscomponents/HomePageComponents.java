@@ -1181,7 +1181,7 @@ public class HomePageComponents extends ReusableLibrary {
 				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderMore), HomePageObjects.lnkHeaderMore.getObjectname());
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderMoreSublinkApparal),
 						HomePageObjects.lnkHeaderMoreSublinkApparal.getObjectname());	
-				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblMoreSubLineApparal_STG), HomePageObjects.lblMoreSubLineApparal_STG.getObjectname(), "Accessories") && driver.getCurrentUrl().contains("/more/accessories")) {
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblMoreSubLineApparal_STG), HomePageObjects.lblMoreSubLineApparal_STG.getObjectname(), "Accessories") && driver.getCurrentUrl().contains("/more/apparel")) {
 					report.updateTestLog("Verify Navigation to More Sub link - Apparal page",
 							"User is successfully Navigated to More Sub link - Apparal page", Status.PASS);
 				} else {

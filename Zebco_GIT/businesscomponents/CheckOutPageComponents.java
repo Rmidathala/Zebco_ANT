@@ -86,11 +86,11 @@ public class CheckOutPageComponents extends ReusableLibrary {
 		try {
 			String shippingMethod = dataTable.getData("General_Data","ShippingMethod");
 			if(shippingMethod.equalsIgnoreCase("Ground")) {
-				commonFunction.clickIfElementPresent(getPageElement(CheckoutPageObjects.radioBtnShippingMethodGround), CheckoutPageObjects.radioBtnShippingMethodGround.getObjectname());
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(CheckoutPageObjects.radioBtnShippingMethodGround), CheckoutPageObjects.radioBtnShippingMethodGround.getObjectname());
 			} else if(shippingMethod.equalsIgnoreCase("2ndDay")) {
-				commonFunction.clickIfElementPresent(getPageElement(CheckoutPageObjects.radioBtnShippingMethod2ndDay), CheckoutPageObjects.radioBtnShippingMethod2ndDay.getObjectname());
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(CheckoutPageObjects.radioBtnShippingMethod2ndDay), CheckoutPageObjects.radioBtnShippingMethod2ndDay.getObjectname());
 			} else {
-				commonFunction.clickIfElementPresent(getPageElement(CheckoutPageObjects.radioBtnShippingMethodNextDay), CheckoutPageObjects.radioBtnShippingMethodNextDay.getObjectname());
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(CheckoutPageObjects.radioBtnShippingMethodNextDay), CheckoutPageObjects.radioBtnShippingMethodNextDay.getObjectname());
 			}
 		}catch(Exception e) {
 			report.updateTestLog("Select Shipping Method", "Something went wrong!" + e.toString(),

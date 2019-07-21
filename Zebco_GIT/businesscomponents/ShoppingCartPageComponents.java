@@ -95,6 +95,7 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			return null;
 		}
 	}
+	
 	public void navigateToCheckOutPage() {
 		try {
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.btnGoToCheckout), ShoppingCartPageObjects.btnGoToCheckout.getObjectname());
