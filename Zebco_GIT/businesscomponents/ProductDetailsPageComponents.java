@@ -220,7 +220,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.viewStoreLocationlink), ProductDetailsPageObjects.viewStoreLocationlink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productPrice), ProductDetailsPageObjects.productPrice.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productDescription), ProductDetailsPageObjects.productDescription.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productModels), ProductDetailsPageObjects.productModels.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productModels), ProductDetailsPageObjects.productModels.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantitylabel), ProductDetailsPageObjects.quantitylabel.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantityDecrementor), ProductDetailsPageObjects.quantityDecrementor.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productQuantity), ProductDetailsPageObjects.productQuantity.getObjectname());

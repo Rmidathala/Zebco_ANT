@@ -653,7 +653,7 @@ public class HomePageComponents extends ReusableLibrary {
 
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkCASupplyChainAct),
 						HomePageObjects.lnkCASupplyChainAct.getObjectname());
-				if (driver.getCurrentUrl().contains("/supply-chains-act")) {
+				if (driver.getCurrentUrl().contains("/supply-chain-act")) {
 					report.updateTestLog("Verify User navigated to CA Supply Chains Act Page",
 							"User is successfully navigated to CA Supply Chains Act  page", Status.PASS);
 				} else {
