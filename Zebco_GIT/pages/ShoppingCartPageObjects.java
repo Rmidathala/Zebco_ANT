@@ -25,7 +25,7 @@ public enum ShoppingCartPageObjects implements PageObjects {
 	lnkMoveToWishList("//div[@class='actions-toolbar-row']/a[1]",XPATH,"Shopping Cart Page - Link - Move To Wish List"),
 	btnUpdateShoppingCart("//button[@title='Update Shopping Cart']",XPATH,"Shopping Cart Page - Shopping Cart Table - Button - Update Shopping Cart"),
 	
-	msgProdutctMovedToWishList("//div[@role='alert']/div/div",XPATH,"Shopping Cart Page - Message - Product Moved to Wishlist"),
+	msgProdutctMovedToWishList("//div[@class='message-success success message']/div",XPATH,"Shopping Cart Page - Message - Product Moved to Wishlist"),
 	
 	// Summary section
 	titleSummary("//strong[@class='summary title']",XPATH,"Shopping Cart Page - Summary section - Title - Summary"),
@@ -47,7 +47,7 @@ public enum ShoppingCartPageObjects implements PageObjects {
 	lblHaveADiscount("cart-discount-title",ID,"Shopping Cart Page - Discount Section - Have a discount code? Apply it here. "),
 	txtBoxCounponCode("//input[@name='coupon_code']",XPATH,"Shopping Cart Page - Discount Section - Enter dicount Code"),
 	btnApplyDiscount("cart-discount-button",ID,"Shopping Cart Page - Discount Section - Button Apply Discount"),
-	
+	itemCountOnMiniCart("//a[@class='action showcart']/span[@class='counter qty']/span[@class='counter-number']",XPATH,"Home Page - Cart Icon - Quantity Count"),
 	;
 
 	String strProperty = "";

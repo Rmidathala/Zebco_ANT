@@ -12,6 +12,7 @@ import com.cognizant.framework.selenium.WebDriverUtil;
 
 import componentgroups.CommonFunctions;
 import pages.MyAccountPageObjects;
+import pages.ProductDetailsPageObjects;
 
 
 public class MyAccountPageComponents extends ReusableLibrary {
@@ -46,6 +47,26 @@ public class MyAccountPageComponents extends ReusableLibrary {
 			}
 		} catch (Exception e) {
 			report.updateTestLog("Home Page - get page element",
+					pageEnum.toString() + " object is not defined or found.", Status.FAIL);
+			return null;
+		}
+	}
+	
+	private WebElement getPageElement(ProductDetailsPageObjects pageEnum) {
+		WebElement element;
+		try {
+			element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
+					true);
+			if (element != null) {
+				System.out.println("Found the element: " + pageEnum.getObjectname());
+			return element;
+			}
+			else {
+				System.out.println("Element Not Found: "+pageEnum.getObjectname());
+				return null;
+			}
+		} catch (Exception e) {
+			report.updateTestLog("Product Details Page - get page element",
 					pageEnum.toString() + " object is not defined or found.", Status.FAIL);
 			return null;
 		}
@@ -92,12 +113,13 @@ public class MyAccountPageComponents extends ReusableLibrary {
 			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnAddNewAddress), MyAccountPageObjects.btnAddNewAddress.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lblAddNewAddress), MyAccountPageObjects.lblAddNewAddress.getObjectname());
 			String firstName = dataTable.getData("General_Data", "FirstName");
-			String lastName = dataTable.getData("Genenral_Data", "LastName");
+			String lastName = dataTable.getData("General_Data", "LastName");
 			String company = dataTable.getData("General_Data", "Company");
 			String phone = dataTable.getData("General_Data", "Phone");
 			String streetAddr = dataTable.getData("General_Data", "StreetAddress");
 			String city = dataTable.getData("General_Data", "City");
 			String state = dataTable.getData("General_Data", "State");
+			String zipCode = dataTable.getData("General_Data", "ZipCode");
 			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxFirstName), firstName, MyAccountPageObjects.txtBoxFirstName.getObjectname());
 			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxLastName), lastName, MyAccountPageObjects.txtBoxLastName.getObjectname());
 			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxCompany), company, MyAccountPageObjects.txtBoxCompany.getObjectname());
@@ -105,8 +127,8 @@ public class MyAccountPageComponents extends ReusableLibrary {
 			
 			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxStreetAddressLine1), streetAddr, MyAccountPageObjects.txtBoxStreetAddressLine1.getObjectname());
 			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxCity), city, MyAccountPageObjects.txtBoxCity.getObjectname());
-			commonFunction.selectAnyElement(getPageElement(MyAccountPageObjects.txtBoxStreetAddressLine1), state, MyAccountPageObjects.txtBoxStreetAddressLine1.getObjectname());
-		
+			commonFunction.selectAnyElement(getPageElement(MyAccountPageObjects.drpDownState), state, MyAccountPageObjects.drpDownState.getObjectname());
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxZipCode), zipCode, MyAccountPageObjects.txtBoxZipCode.getObjectname());
 			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnSaveAddress), MyAccountPageObjects.btnSaveAddress.getObjectname());
 			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lnkDeleteAddress), MyAccountPageObjects.lnkDeleteAddress.getObjectname())) {
 				report.updateTestLog("Verify Address is saved",
@@ -127,6 +149,26 @@ public class MyAccountPageComponents extends ReusableLibrary {
 			
 			String firstName = dataTable.getData("General_Data", "FirstName");
 			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkEditDefalutBillingAddress), MyAccountPageObjects.lnkEditDefalutBillingAddress.getObjectname());
+			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.titleEditAddress), MyAccountPageObjects.titleEditAddress.getObjectname())) {
+				report.updateTestLog("Verify user navigated to Edit Address Page",
+						"User successfully navigated to edit address page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify user navigated to Edit Address Page",
+						"User NOT navigated to edit address page", Status.FAIL);
+			}
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxFirstName), firstName, MyAccountPageObjects.txtBoxFirstName.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnSaveAddress), MyAccountPageObjects.btnSaveAddress.getObjectname());
+		}catch(Exception e) {
+			report.updateTestLog("My Account Page - Validate Edit Address", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
+	
+	public void validateEditAddress_STG() {
+		try {
+			
+			String firstName = dataTable.getData("General_Data", "FirstName");
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkEditDefalutBillingAddressSTG), MyAccountPageObjects.lnkEditDefalutBillingAddressSTG.getObjectname());
 			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.titleEditAddress), MyAccountPageObjects.titleEditAddress.getObjectname())) {
 				report.updateTestLog("Verify user navigated to Edit Address Page",
 						"User successfully navigated to edit address page", Status.PASS);
@@ -205,13 +247,178 @@ public class MyAccountPageComponents extends ReusableLibrary {
 		}
 	}
 	
-	public void navigateToWishListFromMyAccountPage() {
+
+	
+	public void validateAccountInformationEdit() {
 		try {
+			String newEmail = dataTable.getData("General_Data", "Email");
+			String pass = dataTable.getData("General_Data", "Password");
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkAccountInformationLeftNavigation), MyAccountPageObjects.lnkAccountInformationLeftNavigation.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.chkBoxChangeMail), MyAccountPageObjects.chkBoxChangeMail.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.chkBoxChangePassword), MyAccountPageObjects.chkBoxChangePassword.getObjectname());
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxEmail), newEmail, MyAccountPageObjects.txtBoxEmail.getObjectname());
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxCurrentPassword), pass, MyAccountPageObjects.txtBoxCurrentPassword.getObjectname());
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxNewPassword), pass, MyAccountPageObjects.txtBoxNewPassword.getObjectname());
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxConfirmPassword), pass, MyAccountPageObjects.txtBoxConfirmPassword.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnSave), MyAccountPageObjects.btnSave.getObjectname());
+			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.msgAccountInformationSaved), MyAccountPageObjects.msgAccountInformationSaved.getObjectname())) {
+				report.updateTestLog("Verify Account Information Edit is working",
+						"User is able to update info in Account Information Page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify Account Information Edit is working",
+						"User is NOT able to update info in Account Information Page", Status.FAIL);
+			}
 			
 		}catch(Exception e) {
-			
+			report.updateTestLog("My Account Page - Validate Account Information Edit", "Something went wrong!" + e.toString(),
+					Status.FAIL);
 		}
 	}
 	
+	public void validateNewsletterSubscriptionChange() {
+		try {
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkNewsletterSubscriptionLeftNavigation), MyAccountPageObjects.lnkNewsletterSubscriptionLeftNavigation.getObjectname());
+			if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.lblNewsLetter), MyAccountPageObjects.lblNewsLetter.getObjectname(),"Newsletter Subscription")) {
+				report.updateTestLog("Verify user navigated to News Letter subscrition Page",
+						"User successfully navigated to newsletter subscription page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify user navigated to News Letter subscrition Page",
+						"User NOT navigated to newsletter subscription page", Status.FAIL);
+			}
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.chekBoxGeneralSubscription), MyAccountPageObjects.chekBoxGeneralSubscription.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnSavenewsletterSubscription), MyAccountPageObjects.btnSavenewsletterSubscription.getObjectname());
+		
+			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.msgSuccessNewsletterSubscription), MyAccountPageObjects.msgSuccessNewsletterSubscription.getObjectname())) {
+				report.updateTestLog("Verify Newsletter subscription change is updated",
+						"Newsletter subscription change is updated", Status.PASS);
+			} else {
+				report.updateTestLog("Verify Newsletter subscription change is updated",
+						"Newsletter subscription change is NOT updated", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("My Account Page - Validate Newsletter subscription", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
 	
+
+	public void navigateToWishListFromMyAccountPage() {
+		try {
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkMyWishListLeftNavigation), MyAccountPageObjects.lnkMyWishListLeftNavigation.getObjectname());
+			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.imgProduct), MyAccountPageObjects.imgProduct.getObjectname())) {
+				report.updateTestLog("Verify user navigated to Wish list from My Account Page",
+						"User successfully navigated to Wish List Page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify user navigated to Wish list from My Account Page",
+						"User NOT navigated to Wish List Page", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("Navigate To Wish List from My Account Page", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
+	
+	public void addProductToCartFromWishList() {
+		try {
+			commonFunction.mouseOver(getPageElement(MyAccountPageObjects.imgProduct), MyAccountPageObjects.imgProduct.getObjectname());
+			if(commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnAddToCart), MyAccountPageObjects.btnAddToCart.getObjectname())) {
+				report.updateTestLog("Verify product added to cart from wishlist",
+						"Product is successfully added to cart from Wish list", Status.PASS);
+			} else {
+				report.updateTestLog("Verify product added to cart from wishlist",
+						"Product is NOT added to cart from Wish list", Status.FAIL);
+			}
+			
+		}catch(Exception e) {
+			report.updateTestLog("Add Product to Cart From Wish List", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
+	
+	public void removeProductFromWishList() {
+		try {
+			commonFunction.mouseOver(getPageElement(MyAccountPageObjects.imgProduct), MyAccountPageObjects.imgProduct.getObjectname());
+			if(commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkRemoveItem), MyAccountPageObjects.lnkRemoveItem.getObjectname())) {
+				report.updateTestLog("Verify product added to cart from wishlist",
+						"Product is successfully added to cart from Wish list", Status.PASS);
+			} else {
+				report.updateTestLog("Verify product added to cart from wishlist",
+						"Product is NOT added to cart from Wish list", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("Remove From Wish List", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
+	
+	public void verifyAddAllToCartFromWishList() {
+		try {
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnAddAllToCart), MyAccountPageObjects.btnAddAllToCart.getObjectname());
+			if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.emptyWishListMsg), MyAccountPageObjects.emptyWishListMsg.getObjectname(),"You have no items in your wish list.")) {
+				report.updateTestLog("Verify if all the products are added to cart from wish list",
+						"All the products in wish list are added to cart successfully", Status.PASS);
+			} else {
+				report.updateTestLog("Verify if all the products are added to cart from wish list",
+						"All the products in wish list are NOT Added to cart", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("Add All Product To Cart from Wish List", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
+	public void validateEditWishListProduct() {
+		try {
+			commonFunction.mouseOver(getPageElement(MyAccountPageObjects.imgProduct), MyAccountPageObjects.imgProduct.getObjectname());
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtBoxQuantity), "2", MyAccountPageObjects.txtBoxQuantity.getObjectname());
+			commonFunction.hitEnterKey(getPageElement(MyAccountPageObjects.txtBoxQuantity), MyAccountPageObjects.txtBoxQuantity.getObjectname());
+			commonFunction.mouseOver(getPageElement(MyAccountPageObjects.imgProduct), MyAccountPageObjects.imgProduct.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkEditProduct), MyAccountPageObjects.lnkEditProduct.getObjectname());
+			if(commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainName), ProductDetailsPageObjects.productMainName.getObjectname())) {
+				report.updateTestLog("Verify user navigated to Product Details Page",
+						"User successfully navigated to Product Details Page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify user navigated to Product Details Page",
+						"User NOT navigated to Product Details Page", Status.FAIL);
+			}
+			
+			if(commonFunction.isElementPresentContainsText(getPageElement(ProductDetailsPageObjects.productQuantity), ProductDetailsPageObjects.productQuantity.getObjectname(),"2")) {
+				report.updateTestLog("Verify Quantity is updated from the wish list",
+						"Quanity is updated from the wish list", Status.PASS);
+			} else {
+				report.updateTestLog("Verify Quantity is updated from the wish list",
+						"Quanity is not updated from the Wish list", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("My Account- Wish list - Edit Wish List product", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
+	
+	public void validateShareWishList() {
+		try {
+			String email= dataTable.getData("General_Data", "Email_Share");
+			String msg = dataTable.getData("General_Data", "Message");
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnShareWishList), MyAccountPageObjects.btnShareWishList.getObjectname());
+			if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.lblWishListSharing), MyAccountPageObjects.lblWishListSharing.getObjectname(),"Wish List Sharing")) {
+				report.updateTestLog("Verify user navigated to Share Wish List Page",
+						"User is successfully navigated to Share Wish List Page", Status.PASS);
+			} else {
+				report.updateTestLog("Verify user navigated to Share Wish List Page",
+						"User is NOT navigated to Share Wish List Page", Status.FAIL);
+			}
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtAreaEmails),email, MyAccountPageObjects.txtAreaEmails.getObjectname());
+			commonFunction.clearAndEnterText(getPageElement(MyAccountPageObjects.txtAreaMessage), msg, MyAccountPageObjects.txtAreaMessage.getObjectname());
+			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.btnShareWishList), MyAccountPageObjects.btnShareWishList.getObjectname());
+			if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.msgSuccessShareWishList), MyAccountPageObjects.msgSuccessShareWishList.getObjectname(),"Your wish list has been shared.")) {
+				report.updateTestLog("Verify Wish List is shared",
+						"Wish List is successfully Shared", Status.PASS);
+			} else {
+				report.updateTestLog("Verify Wish List is shared",
+						"Wish List is NOT Shared", Status.FAIL);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("My Account- Wish list - Share Wish List", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
 }

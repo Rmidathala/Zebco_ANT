@@ -228,6 +228,21 @@ public class ProductListingPageComponents extends ReusableLibrary {
 					Status.FAIL);
 		}
 	}
+	
+	public void navigateToGroupedProduct_STG() {
+		try {
+			
+			//commonFunction.scrollIntoView(getPageElement(ProductListingPageObjects.card1ProductName));
+			commonFunction.mouseOver(getPageElement(ProductListingPageObjects.card1ProductName),ProductListingPageObjects.card1ProductName.getObjectname() );
+			commonFunction.clickIfElementPresent(getPageElement(ProductListingPageObjects.shopBulletBtnSTG), ProductListingPageObjects.shopBulletBtnSTG.getObjectname());
+			navigateToFirstProduct();
+			
+		} catch (Exception e) {
+			report.updateTestLog("Navigate to Grouped Product Listing page", "Something went wrong!" + e.toString(),
+					Status.FAIL);
+		}
+	}
+	
 	public void navigateToFirstProduct() {
 		try {
 			List<WebElement> products = commonFunction.getElementsByProperty(

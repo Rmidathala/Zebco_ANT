@@ -15,6 +15,7 @@ import com.cognizant.framework.selenium.WebDriverUtil;
 
 import componentgroups.CommonFunctions;
 import pages.HomePageObjects;
+import pages.MyAccountPageObjects;
 
 
 public class HomePageComponents extends ReusableLibrary {
@@ -37,6 +38,26 @@ public class HomePageComponents extends ReusableLibrary {
 		WebDriverUtil webdriverutil = new WebDriverUtil(driver);
 		
 		private WebElement getPageElement(HomePageObjects pageEnum) {
+			WebElement element;
+			try {
+				element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
+						true);
+				if (element != null) {
+					System.out.println("Found the element: " + pageEnum.getObjectname());
+				return element;
+				}
+				else {
+					System.out.println("Element Not Found: "+pageEnum.getObjectname());
+					return null;
+				}
+			} catch (Exception e) {
+				report.updateTestLog("Home Page - get page element",
+						pageEnum.toString() + " object is not defined or found.", Status.FAIL);
+				return null;
+			}
+		}
+		
+		private WebElement getPageElement(MyAccountPageObjects pageEnum) {
 			WebElement element;
 			try {
 				element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
@@ -774,6 +795,60 @@ public class HomePageComponents extends ReusableLibrary {
 			}
 		}
 		
+		public void validateCombosSubLinks_STG() {
+			try {
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderCombos), HomePageObjects.lnkHeaderCombos.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderCombosSubLinkSpinCast),
+						HomePageObjects.lnkHeaderCombosSubLinkSpinCast.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblSpincast), HomePageObjects.lblSpincast.getObjectname(), "Spincast") && driver.getCurrentUrl().contains("/combos/spincast")) {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Spincast page",
+							"User is successfully Navigated to Combos Sub link - Spincast page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Spincast page",
+							"User is NOT Navigated to Combos Sub link - Spincast page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderCombos), HomePageObjects.lnkHeaderCombos.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderCombosSubLinkSpinning),
+						HomePageObjects.lnkHeaderCombosSubLinkSpinning.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblSpinning), HomePageObjects.lblSpinning.getObjectname(), "Spinning") && driver.getCurrentUrl().contains("/combos/spinning")) {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Spinning page",
+							"User is successfully Navigated to Combos Sub link - Spinning page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Spinning page",
+							"User is NOT Navigated to Combos Sub link - Spinning page", Status.FAIL);
+				}
+				
+						
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderCombos), HomePageObjects.lnkHeaderCombos.getObjectname());
+				
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderCombosSublinkOtherSublinkBaitCast),
+						HomePageObjects.lnkHeaderCombosSublinkOtherSublinkBaitCast.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblBaitcast), HomePageObjects.lblBaitcast.getObjectname(), "Baitcast") && driver.getCurrentUrl().contains("/combos/baitcast")) {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Sub-Sublink other - BaitCast Page",
+							"User is successfully Navigated to Combos Sub link - Sub-Sublink other - BaitCast Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Sub-Sublink other - BaitCast Page",
+							"User is NOT Navigated to Combos Sub link - Sub-Sublink other - BaitCast Page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderCombos), HomePageObjects.lnkHeaderCombos.getObjectname());
+				
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderCombosSublinkOtherSublinkFly),
+						HomePageObjects.lnkHeaderCombosSublinkOtherSublinkFly.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblFly), HomePageObjects.lblFly.getObjectname(), "Fly") && driver.getCurrentUrl().contains("/combos/fly")) {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Sub-Sublink other - Fly Page",
+							"User is successfully Navigated to Combos Sub link - Sub-Sublink other - Fly Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Combos Sub link - Sub-Sublink other - Fly Page",
+							"User is NOT Navigated to Combos Sub link - Sub-Sublink other - Fly Page", Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Home Page - Combos Sub link validation", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
+		
 		public void validateCombosSubLinks() {
 			try {
 				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderCombos), HomePageObjects.lnkHeaderCombos.getObjectname());
@@ -913,6 +988,69 @@ public class HomePageComponents extends ReusableLibrary {
 			}
 		}
 		
+		public void validateReelsSubLinks_STG() {
+			try {
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderReels), HomePageObjects.lnkHeaderReels.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderReelsSublinkSpincast),
+						HomePageObjects.lnkHeaderReelsSublinkSpincast.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblReelSpincast), HomePageObjects.lblReelSpincast.getObjectname(), "Spincast") && driver.getCurrentUrl().contains("/reels/spincast")) {
+					report.updateTestLog("Verify Navigation to Reels Sub link - Spincast page",
+							"User is successfully Navigated to Reels Sub link - Spincast page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Reels Sub link - Spincast page",
+							"User is NOT Navigated to Reels Sub link - Spincast page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderReels), HomePageObjects.lnkHeaderReels.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderReelsSublinkSpinning),
+						HomePageObjects.lnkHeaderReelsSublinkSpinning.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblReelSpinning), HomePageObjects.lblReelSpinning.getObjectname(), "Spinning") && driver.getCurrentUrl().contains("/reels/spinning")) {
+					report.updateTestLog("Verify Navigation to Reels Sub link - Spinning page",
+							"User is successfully Navigated to Reels Sub link - Spinning page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Reels Sub link - Spinning page",
+							"User is NOT Navigated to Reels Sub link - Spinning page", Status.FAIL);
+				}
+				
+						
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderReels), HomePageObjects.lnkHeaderReels.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderReelsSublinkConventional),
+						HomePageObjects.lnkHeaderReelsSublinkConventional.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblReelConventional), HomePageObjects.lblReelConventional.getObjectname(), "Conventional") && driver.getCurrentUrl().contains("/reels/conventional")) {
+					report.updateTestLog("Verify Navigation to Reels Sub link - Conventional Page",
+							"User is successfully Navigated to Reels Sub link - Conventional Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Reels Sub link - Conventional Page",
+							"User is NOT Navigated to Reels Sub link - Conventional Page", Status.FAIL);
+				}
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderReels), HomePageObjects.lnkHeaderReels.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderReelSubLinkBaitCast_STG),
+						HomePageObjects.lnkHeaderReelSubLinkBaitCast_STG.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblBaitcast), HomePageObjects.lblBaitcast.getObjectname(), "Baitcast") && driver.getCurrentUrl().contains("/reels/baitcast")) {
+					report.updateTestLog("Verify Navigation to Reels Sub link -  BaitCast Page",
+							"User is successfully Navigated to Reels Sub link -  BaitCast Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Reels Sub link  - BaitCast Page",
+							"User is NOT Navigated to Reels Sub link -  BaitCast Page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderReels), HomePageObjects.lnkHeaderReels.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderReelSubLinkFly_STG),
+						HomePageObjects.lnkHeaderReelSubLinkFly_STG.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblFly), HomePageObjects.lblFly.getObjectname(), "Fly") && driver.getCurrentUrl().contains("/reels/fly")) {
+					report.updateTestLog("Verify Navigation to Reels Sub link - - Fly Page",
+							"User is successfully Navigated to Reels Sub link - - Fly Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Reels Sub link - Fly Page",
+							"User is NOT Navigated to Reels Sub link -  Fly Page", Status.FAIL);
+				}
+				
+			}catch(Exception e) {
+				report.updateTestLog("Home Page - Reels Sub link validation", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
+		
 		public void validateRodsSubLinks() {
 			try {
 				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderRods), HomePageObjects.lnkHeaderRods.getObjectname());
@@ -937,6 +1075,47 @@ public class HomePageComponents extends ReusableLibrary {
 							"User is NOT Navigated to Rods Sub link - Spinning page", Status.FAIL);
 				}
 				
+				
+			}catch(Exception e) {
+				report.updateTestLog("Home Page - Rods Sub link validation", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
+		
+		public void validateRodsSubLinks_STG() {
+			try {
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderRods), HomePageObjects.lnkHeaderRods.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderRodsSublinkCasting),
+						HomePageObjects.lnkHeaderRodsSublinkCasting.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblRodsCasting), HomePageObjects.lblRodsCasting.getObjectname(), "Casting") && driver.getCurrentUrl().contains("/rods/casting")) {
+					report.updateTestLog("Verify Navigation to Rods Sub link - Casting page",
+							"User is successfully Navigated to Rods Sub link - Casting page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Rods Sub link - Casting page",
+							"User is NOT Navigated to Rods Sub link - Casting page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderRods), HomePageObjects.lnkHeaderRods.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderRodsSublinkSpinning_STG),
+						HomePageObjects.lnkHeaderRodsSublinkSpinning_STG.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblRodsSpinning), HomePageObjects.lblRodsSpinning.getObjectname(), "Spinning") && driver.getCurrentUrl().contains("/rods/spinning")) {
+					report.updateTestLog("Verify Navigation to Rods Sub link - Spinning page",
+							"User is successfully Navigated to Rods Sub link - Spinning page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Rods Sub link - Spinning page",
+							"User is NOT Navigated to Rods Sub link - Spinning page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderRods), HomePageObjects.lnkHeaderRods.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderRodsSubLinkSpincast_STG),
+						HomePageObjects.lnkHeaderRodsSubLinkSpincast_STG.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblRodsSpincast), HomePageObjects.lblRodsSpincast.getObjectname(), "Spincast") && driver.getCurrentUrl().contains("/rods/spincast")) {
+					report.updateTestLog("Verify Navigation to Rods Sub link - Spincast page",
+							"User is successfully Navigated to Rods Sub link - Spincast page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Rods Sub link - Spincast page",
+							"User is NOT Navigated to Rods Sub link - Spincast page", Status.FAIL);
+				}
 				
 			}catch(Exception e) {
 				report.updateTestLog("Home Page - Rods Sub link validation", "Something went wrong!" + e.toString(),
@@ -975,13 +1154,54 @@ public class HomePageComponents extends ReusableLibrary {
 			}
 		}
 		
+		public void validateMoreSubLinks_STG() {
+			try {
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderMore), HomePageObjects.lnkHeaderMore.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderMoreSublinkLine),
+						HomePageObjects.lnkHeaderMoreSublinkLine.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblMoreSublinkLine_STG), HomePageObjects.lblMoreSublinkLine_STG.getObjectname(), "Line") && driver.getCurrentUrl().contains("/more/line")) {
+					report.updateTestLog("Verify Navigation to More Sub link - Fishing Line page",
+							"User is successfully Navigated to More Sub link - Fishing Line page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to More Sub link - Fishing Line page",
+							"User is NOT Navigated to Rods Sub More - Fishing Line page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderMore), HomePageObjects.lnkHeaderMore.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderMoreSublinkAccessoriesSTG),
+						HomePageObjects.lnkHeaderMoreSublinkAccessoriesSTG.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblMoreSubLineAccessories_STG), HomePageObjects.lblMoreSubLineAccessories_STG.getObjectname(), "Accessories") && driver.getCurrentUrl().contains("/more/accessories")) {
+					report.updateTestLog("Verify Navigation to More Sub link - Accessories page",
+							"User is successfully Navigated to More Sub link - Accessories page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to More Sub link - Accessories page",
+							"User is NOT Navigated to More Sub link - Accessories page", Status.FAIL);
+				}
+				
+				commonFunction.mouseOver(getPageElement(HomePageObjects.lnkHeaderMore), HomePageObjects.lnkHeaderMore.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderMoreSublinkApparal),
+						HomePageObjects.lnkHeaderMoreSublinkApparal.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblMoreSubLineApparal_STG), HomePageObjects.lblMoreSubLineApparal_STG.getObjectname(), "Accessories") && driver.getCurrentUrl().contains("/more/accessories")) {
+					report.updateTestLog("Verify Navigation to More Sub link - Apparal page",
+							"User is successfully Navigated to More Sub link - Apparal page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to More Sub link - Apparal page",
+							"User is NOT Navigated to More Sub link - Apparal page", Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Home Page - More Sub link validation", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
+		
+		
 		public void validateAdventureTab() {
 			try {
 				commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
 						HomePageObjects.btnStartAnAdventure.getObjectname());	
 				
-				commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.lblGrabRodAndReel), HomePageObjects.lblGrabRodAndReel.getObjectname(), "Grab a Rod & Reel. Choose Your Adventure.");
-				commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.msgPickTopicBelow), HomePageObjects.msgPickTopicBelow.getObjectname(), "Pick a topic below and we'll hook you up with everything you need to know.");
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lblGrabRodAndReel), HomePageObjects.lblGrabRodAndReel.getObjectname());
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.msgPickTopicBelow), HomePageObjects.msgPickTopicBelow.getObjectname());
 				
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.imgAddFishingToYourAdventure), HomePageObjects.imgAddFishingToYourAdventure.getObjectname());
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lnkAddFishingToYourAdventure), HomePageObjects.lnkAddFishingToYourAdventure.getObjectname());
@@ -1050,6 +1270,82 @@ public class HomePageComponents extends ReusableLibrary {
 		
 		}
 		
+		public void validateAdventureTab_STG() {
+			try {
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
+						HomePageObjects.btnStartAnAdventure.getObjectname());	
+				
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lblGrabRodAndReel), HomePageObjects.lblGrabRodAndReel.getObjectname());
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.msgPickTopicBelow), HomePageObjects.msgPickTopicBelow.getObjectname());
+				
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.imgOutFitYourEntourageSTG), HomePageObjects.imgOutFitYourEntourageSTG.getObjectname());
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lnkOutFitYourEntourageSTG), HomePageObjects.lnkOutFitYourEntourageSTG.getObjectname());
+				commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.msgOutFitYourEntourageSTG), HomePageObjects.msgOutFitYourEntourageSTG.getObjectname(), "Going camping or kayaking? We can show you how easy it is to reel in some good times.");
+				
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.imgFishForTheFirstTimeSTG), HomePageObjects.imgFishForTheFirstTimeSTG.getObjectname());
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lnkFishForTheFirstTimeSTG), HomePageObjects.lnkFishForTheFirstTimeSTG.getObjectname());
+				commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.msgFishForTheFirstTime), HomePageObjects.msgFishForTheFirstTime.getObjectname(), "With easy-casting Zebco gear and a few tips, you'll be fishing like a pro in no time.");
+				
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.imgTeachSomeoneFishingExample), HomePageObjects.imgTeachSomeoneFishingExample.getObjectname());
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lnkTeachSomeoneFishingExample), HomePageObjects.lnkTeachSomeoneFishingExample.getObjectname());
+				commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.msgTeachSomeoneFishingExample), HomePageObjects.msgTeachSomeoneFishingExample.getObjectname(), "From \"how-to\" videos to helpful tips for kids, we make it easy to share your love for fishing.");
+				
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.imgImproveFishingSkillsExample), HomePageObjects.imgImproveFishingSkillsExample.getObjectname());
+				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lnkImproveFishingSkillsExample), HomePageObjects.lnkImproveFishingSkillsExample.getObjectname());
+				commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.msgImproveFishingSkillsExample), HomePageObjects.msgImproveFishingSkillsExample.getObjectname(), "If you've got the basics down, we can show you how to take your fishing skills up a notch.");
+				
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkOutFitYourEntourageSTG),
+						HomePageObjects.lnkOutFitYourEntourageSTG.getObjectname());	
+				if(commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.titleOutfitYourEntourageSTG), HomePageObjects.titleOutfitYourEntourageSTG.getObjectname())) {
+					report.updateTestLog("Verify Navigation to Outfitting guide  Page",
+							"User is successfully Navigated to Outfitting guide Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Outfitting guide  Page",
+							"User is NOT Navigated to Outfitting guide  Page", Status.FAIL);
+				}
+				
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
+						HomePageObjects.btnStartAnAdventure.getObjectname());	
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkFishForTheFirstTimeSTG),
+						HomePageObjects.lnkFishForTheFirstTimeSTG.getObjectname());
+				if(commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.titleFishForTheFirstTimeSTG), HomePageObjects.titleFishForTheFirstTimeSTG.getObjectname())) {
+					report.updateTestLog("Verify Navigation to Fish for the first time Page",
+							"User is successfully Navigated to Fish for the first time Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Fish for the first time Page",
+							"User is NOT Navigated to Fish for the first time Page", Status.FAIL);
+				}
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
+						HomePageObjects.btnStartAnAdventure.getObjectname());	
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkTeachSomeoneFishingExample),
+						HomePageObjects.lnkTeachSomeoneFishingExample.getObjectname());
+				if(commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.titleTeachSomeoneFishingExampleSTG), HomePageObjects.titleTeachSomeoneFishingExampleSTG.getObjectname())) {
+					report.updateTestLog("Verify Navigation to Teach Someone to Fish Page",
+							"User is successfully Navigated to Teach Someone to Fish Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Teach Someone to Fish Page",
+							"User is NOT Navigated to Teach Someone to Fish Page", Status.FAIL);
+				}
+				
+				commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
+						HomePageObjects.btnStartAnAdventure.getObjectname());	
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkImproveFishingSkillsExample),
+						HomePageObjects.lnkImproveFishingSkillsExample.getObjectname());
+				if(commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.titleBeABetterAnglerSTG), HomePageObjects.titleBeABetterAnglerSTG.getObjectname())) {
+					report.updateTestLog("Verify Navigation to Be a better angler Page",
+							"User is successfully Navigated to Be a better angler Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to Be a better angler Page",
+							"User is NOT Navigated to Be a better angler Page", Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Home Page - Adventure Tab validation", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		
+		}
+		
+		
 		public void navigateToLoginPage() {
 			try {
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.iconLogin), HomePageObjects.iconLogin.getObjectname());
@@ -1096,4 +1392,44 @@ public class HomePageComponents extends ReusableLibrary {
 						Status.FAIL);
 			}
 		}
+		
+		public void navigateToMyAccountPage() {
+			try {
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.iconAccount),
+						HomePageObjects.iconAccount.getObjectname());	
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkMyAccount),
+						HomePageObjects.lnkMyAccount.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.titleMyAccount), MyAccountPageObjects.titleMyAccount.getObjectname(), "My Account")) {
+					report.updateTestLog("Verify user navigated to My Account page",
+							"User is successfully Navigated to  My Account Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to  My Account Page",
+							"User is NOT Navigated to  My Account Page", Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Navigate To My Account Page", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
+		
+		public void navigateToMyAccountPage_STG() {
+			try {
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.iconAccount_STG),
+						HomePageObjects.iconAccount_STG.getObjectname());	
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkMyAccount),
+						HomePageObjects.lnkMyAccount.getObjectname());	
+				if(commonFunction.isElementPresentContainsText(getPageElement(MyAccountPageObjects.titleMyAccount), MyAccountPageObjects.titleMyAccount.getObjectname(), "My Account")) {
+					report.updateTestLog("Verify user navigated to My Account page",
+							"User is successfully Navigated to  My Account Page", Status.PASS);
+				} else {
+					report.updateTestLog("Verify Navigation to  My Account Page",
+							"User is NOT Navigated to  My Account Page", Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Navigate To My Account Page", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}
 }
+
+

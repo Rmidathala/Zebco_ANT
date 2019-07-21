@@ -27,6 +27,7 @@ public enum HomePageObjects implements PageObjects {
 	
 	//Reels Sub link
 	lnkHeaderReelsSublinkSpincast("//li[@class='level1 nav-2-1 category-item first ui-menu-item']/a/span",XPATH,"Home Page - Header - Reels Sub link - Spincast"),
+	
 	lblReelSpincast("h1",TAG,"Reel - Spincast Page - Title - SpinCast"),
 	lnkHeaderReelsSublinkSpinning("//li[@class='level1 nav-2-2 category-item ui-menu-item']/a/span",XPATH,"Home Page Header - Reels - Sub link - Spinning "),
 	lblReelSpinning("h1",TAG,"Reels - Spinning Page - Title - Spinning"),
@@ -35,20 +36,30 @@ public enum HomePageObjects implements PageObjects {
 	lnkHeaderReelsSublinkOther("//li[@class='level1 nav-2-4 category-item ui-menu-item']/a/span",XPATH,"Home Page - Header - Reels - Sub link - Other"),
 	lblReelOther("h1",TAG,"Reels Sub link Other Page - Title - Other"),
 	lnkHeaderReelsSublinkConventional("//li[@class='level1 nav-2-5 category-item last ui-menu-item']/a/span",XPATH,"Home Page - Header - Sub link - Conventional"),
+	lnkHeaderReelSubLinkBaitCast_STG("//li[@class='level1 nav-2-4 category-item ui-menu-item']/a/span",XPATH,"Home Page - Header - Reels - Sub Link - BaitCast"),
+	lnkHeaderReelSubLinkFly_STG("//li[@class='level1 nav-2-5 category-item last ui-menu-item']/a/span",XPATH,"Home Page - Header - Reels - Sub Link - Fly"),
 	lblReelConventional("h1",TAG,"Reels Sub link Conventional Page - Title - Conventional"),
 	
 	//Rods sub links
 	lnkHeaderRodsSublinkCasting("//li[@class='level1 nav-3-1 category-item first ui-menu-item']/a/span",XPATH,"Home Page Header - Rods - Sub link - Casting"),
 	lblRodsCasting("h1",TAG,"Rods Sub link Casting Page - Title - Casting"),
 	lnkHeaderRodsSublinkSpinning("//li[@class='level1 nav-3-2 category-item last ui-menu-item']/a/span",XPATH,"Home Page Header - Rods - Sub link - Spinning"),
-	lblRodsSpinning("h1",TAG,"Rods - Spinning Page - Title - Spinning"),
+	lnkHeaderRodsSublinkSpinning_STG("//li[@class='level1 nav-3-2 category-item ui-menu-item']/a/span",XPATH,"Home Page Header - Rods - Sub link - Spinning"),
 	
+	lblRodsSpinning("h1",TAG,"Rods - Spinning Page - Title - Spinning"),
+	lnkHeaderRodsSubLinkSpincast("//li[@class='level1 nav-3-3 category-item last ui-menu-item active']/a/span",XPATH,"Home Page Header - Rods - Sub Link - Spincast"),
+	lnkHeaderRodsSubLinkSpincast_STG("//li[@class='level1 nav-3-3 category-item last ui-menu-item']/a/span",XPATH,"Home Page Header - Rods - Sub Link - Spincast"),
+	lblRodsSpincast("h1",TAG,"Rods - Spincast Page - Title - Spincast"),
 	// More Sub links
 	lnkHeaderMoreSublinkLine("//li[@class='level1 nav-4-1 category-item first ui-menu-item']/a/span",XPATH,"Home Page - Header - More - Sub link - Line"),
 	lblMoreSublinkLine("//strong[text()='Line']",XPATH,"More Sub Link - Line Label"),
+	lblMoreSublinkLine_STG("h1",TAG,"More Sub Link - Line Label"),
 	lnkHeaderMoreSublinkAccessories("//li[@class='level1 nav-4-2 category-item last ui-menu-item']/a/span",XPATH,"Home Page - Header - More - Sub link - Accessories"),
-	lblMoreSubLineAccessories("//strong[text()='Accessories']",XPATH,"More Sub link - Accessories Label"),
 	
+	lnkHeaderMoreSublinkAccessoriesSTG("//li[@class='level1 nav-4-2 category-item ui-menu-item']/a/span",XPATH,"Home Page - Header - More - Sub link - Accessories"),lblMoreSubLineAccessories("//strong[text()='Accessories']",XPATH,"More Sub link - Accessories Label"),
+	lblMoreSubLineAccessories_STG("h1",TAG,"More Sub link - Accessories Label"),
+	lnkHeaderMoreSublinkApparal("//li[@class='level1 nav-4-3 category-item last ui-menu-item']/a/span",XPATH,"Home Page - Header - More - Sub link - Apparal"),
+	lblMoreSubLineApparal_STG("h1",TAG,"More Sub link - Apparal Label"),
 	// Footer columns
 	footerColAbout("(//div[@class='footer-links-large-title azo-sans font-brown'])[1]",XPATH,"Home page - Footer - Label - About"),
 	footercolMyOrder("(//div[@class='footer-links-large-title azo-sans font-brown'])[2]",XPATH,"Home Page - footer - Label - My Order"),
@@ -127,21 +138,35 @@ public enum HomePageObjects implements PageObjects {
 	msgAddFishingToYourAdventure("(//div[@class='card-body']/p)[1]",XPATH,"Adventure Page - Paragrah under the Image - Add Fishing To Your Adventure"),
 	titleAddFishingToYourAdventure("//div[@class='container']/div/div/h1",XPATH,"Add Fishing To Your Adventure Page - Title - Add Fishing To YOur Adventure Page"),
 	
+	imgOutFitYourEntourageSTG("//a[@title='Outfitting Guide Example']/img",XPATH,"Adventure Page - Image - Outfit Your Entourage"),
+	lnkOutFitYourEntourageSTG("//h3[@class='card-title']/a[@title='Outfitting Guide Example']",XPATH,"Adventure Page - Link - Outfit your Entourage"),
+	msgOutFitYourEntourageSTG("(//div[@class='card-body']/p)[1]",XPATH,"Adventure Page - Paragraph Under the Image - Outfit Your Entourage"),
+	titleOutfitYourEntourageSTG("//h1[@class='page-title']/span",XPATH,"Adventure Page - Title for OutFit Your Entourage"),
+	
+	
 	imgFishForTheFirstTime("//a[@title='Fish for the First Time']/img",XPATH,"Adventure Page - Image - Fish For The First Time"),
 	lnkFishForTheFirstTime("//h3[@class='card-title']/a[@title='Fish Like A Pro Example']",XPATH,"Adventure Page - Link - Fish For The First Time"),
 	msgFishForTheFirstTime("(//div[@class='card-body']/p)[2]",XPATH,"Adventure Page - Paragraph Under the Image - Fish For The First Time"),
 	titleFishForTheFirstTime("//section[@class='adventure-heading overflow-hidden']/div/div/div/h1",XPATH,"Fish For The First Time Page - Title - Fish For The First Time"),
 	
+	imgFishForTheFirstTimeSTG("//a[@title='Fish Like A Pro Example']/img",XPATH,"Adventure Page - Image - Fish for the First Time"),
+	lnkFishForTheFirstTimeSTG("//h3[@class='card-title']/a[@title='Fish Like A Pro Example']",XPATH,"Adventure Page - Link - Fish For The First Time"),
+	titleFishForTheFirstTimeSTG("//h1[@class='page-title']/span",XPATH,"Adventure Page - Title for First for the first Time"),
+	
+	
 	imgTeachSomeoneFishingExample("//a[@title='Teach Someone Fishing Example']/img",XPATH,"Adventure Page - Image - Teach Someone Fishing Example"),
 	lnkTeachSomeoneFishingExample("//h3[@class='card-title']/a[@title='Teach Someone Fishing Example']",XPATH,"Adventure Page - Link - Teach Someone Fishing Example"),
 	msgTeachSomeoneFishingExample("(//div[@class='card-body']/p)[3]",XPATH,"Adventure Page - Paragraph under the image - Teach Someone Fishing Example"),
 	titleTeachSomeoneFishingExample("//section[@class='adventure-heading overflow-hidden']/div/div/div/h1",XPATH,"Teach Someone Fishing Example Page - Title - Teach Someone Fishing Example"),
-		
+	titleTeachSomeoneFishingExampleSTG("//h1[@class='page-title']/span",XPATH,"Teach Someone Fishing Example Page - Title - Teach Someone Fishing Example"),
+	
+	
 	imgImproveFishingSkillsExample("//a[@title='Improve Fishing Skills Example']/img",XPATH,"Adventure Page - Image - Improve Fishing Skills Example"),
 	lnkImproveFishingSkillsExample("//h3[@class='card-title']/a[@title='Improve Fishing Skills Example']",XPATH,"Adventure Page - Link - Improve Fishing Skills Example"),
 	msgImproveFishingSkillsExample("(//div[@class='card-body']/p)[4]",XPATH,"Adventure Page - Paragraph under Improve Fishing Skills Example"),
 	titleBeABetterAngler("//section[@class='adventure-heading overflow-hidden']/div/div/div/h1",XPATH,"Be a Better Angler Page - Title - Be a Better Angler"),
-	
+	titleBeABetterAnglerSTG("//h1[@class='page-title']/span",XPATH,"Be a Better Angler Page - Title - Be a Better Angler"),
+
 	titleFindARetailer("footer-find-a-retailer-title",ID,"Home Page - Find A Retail Label"),
 	txtBoxEnterzipCode("//input[@placeholder='Enter your zip code']",XPATH,"Home Page - Find A Retailer Section - Text Box - Enter your zip code"),
 	btnFindARetailer("footer-find-a-retailer-button",ID,"Home Page - serch Retailer button"),
@@ -157,9 +182,15 @@ public enum HomePageObjects implements PageObjects {
 	btnLocateNearby("//button[@class='button locateNearBy']",XPATH,"Store Locator Page - Button - Locate Near By"),
 	lblFirstStoreName("(//div[@class='location_header'])[1]",XPATH,"Store Locator Page - Store Name"),
 	mapArea("//div[@class='amlocator_mapblock']",XPATH,"Store Locator Page - Google Map "),
+	//logged in
+	iconAccount("//span[@class='action toggle active']",XPATH,"Home Page - Header - Account icon"),
+	lnkMyAccount("//div[@class='customer-menu']/ul/li[1]/a",XPATH,"Home Page - Header - Account - My Account link"),
 	
-	
-	;
+	iconAccount_STG("//span[@class='action toggle']",XPATH,"Home Page - Header - Account icon"),
+	lnkMyAccount_STG("//div[@class='customer-menu']/ul/li[1]/a",XPATH,"Home Page - Header - Account - My Account link"),
+		;
+
+
 
 	String strProperty = "";
 	ObjectLocator locatorType = null;

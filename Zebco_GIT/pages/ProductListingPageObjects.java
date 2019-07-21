@@ -52,7 +52,7 @@ nowShopppingByCategories("//ol[@class='items']/li/span",XPATH,"Now Shopping By C
 // Card Image
 card1ProductName("(//h5[@class='card-title'])[1]",XPATH,"Product Listing Page - Card 1 - Product name"),
 Card1ShopNowBtn("//a[@title='SHOP NOW']",XPATH,"Product Listing Page - Card 1 - Shop Now Button"),
-
+shopBulletBtnSTG("//a[text()='SHOP BULLET']",XPATH,"Product Listing Page - Card 1 - Shop Bullet button"),
 
 ;
 

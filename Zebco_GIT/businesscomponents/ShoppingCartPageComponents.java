@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import supportlibraries.ReusableLibrary;
@@ -13,6 +14,7 @@ import com.cognizant.framework.selenium.WebDriverUtil;
 
 import componentgroups.CommonFunctions;
 import pages.CheckoutPageObjects;
+import pages.ProductDetailsPageObjects;
 import pages.ShoppingCartPageObjects;
 
 public class ShoppingCartPageComponents extends ReusableLibrary {
@@ -69,6 +71,26 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			}
 		} catch (Exception e) {
 			report.updateTestLog("Home Page - get page element",
+					pageEnum.toString() + " object is not defined or found.", Status.FAIL);
+			return null;
+		}
+	}
+	
+	private WebElement getPageElement(ProductDetailsPageObjects pageEnum) {
+		WebElement element;
+		try {
+			element = commonFunction.getElementByProperty(pageEnum.getProperty(), pageEnum.getLocatorType().toString(),
+					true);
+			if (element != null) {
+				System.out.println("Found the element: " + pageEnum.getObjectname());
+			return element;
+			}
+			else {
+				System.out.println("Element Not Found: "+pageEnum.getObjectname());
+				return null;
+			}
+		} catch (Exception e) {
+			report.updateTestLog("Product Details Page - get page element",
 					pageEnum.toString() + " object is not defined or found.", Status.FAIL);
 			return null;
 		}
@@ -209,7 +231,8 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			String zipCode = dataTable.getData("General_Data", "ZipCode");
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.estimateShippingTaxSection), ShoppingCartPageObjects.estimateShippingTaxSection.getObjectname());
 			commonFunction.selectAnyElement(getPageElement(ShoppingCartPageObjects.drpDownState), state, ShoppingCartPageObjects.drpDownState.getObjectname());
-			commonFunction.clearAndEnterText(getPageElement(ShoppingCartPageObjects.txtBoxZipCode), zipCode, ShoppingCartPageObjects.txtBoxZipCode.getObjectname());
+			commonFunction.clearAndEnterTextTabOut(getPageElement(ShoppingCartPageObjects.txtBoxZipCode), zipCode, ShoppingCartPageObjects.txtBoxZipCode.getObjectname());
+			Thread.sleep(5000);
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.radioBtnGroundShipping), ShoppingCartPageObjects.radioBtnGroundShipping.getObjectname());
 			if(commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.lblshippingCharges), ShoppingCartPageObjects.lblshippingCharges.getObjectname()) && commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.priceShippingChargeSummarySection), ShoppingCartPageObjects.priceShippingChargeSummarySection.getObjectname())) {
 				report.updateTestLog("Verify Estimate shipping and Tax in Shopping Cart Page",
@@ -232,7 +255,8 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			String zipCode = dataTable.getData("General_Data", "ZipCode");
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.estimateShippingTaxSection), ShoppingCartPageObjects.estimateShippingTaxSection.getObjectname());
 			commonFunction.selectAnyElement(getPageElement(ShoppingCartPageObjects.drpDownState), state, ShoppingCartPageObjects.drpDownState.getObjectname());
-			commonFunction.clearAndEnterText(getPageElement(ShoppingCartPageObjects.txtBoxZipCode), zipCode, ShoppingCartPageObjects.txtBoxZipCode.getObjectname());
+			commonFunction.clearAndEnterTextTabOut(getPageElement(ShoppingCartPageObjects.txtBoxZipCode), zipCode, ShoppingCartPageObjects.txtBoxZipCode.getObjectname());
+			Thread.sleep(5000);
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.radioBtnGroundShipping), ShoppingCartPageObjects.radioBtnGroundShipping.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.lblSubtotalSummarySection), ShoppingCartPageObjects.lblSubtotalSummarySection.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.priceSubTotalSummarySection), ShoppingCartPageObjects.priceSubTotalSummarySection.getObjectname());
@@ -242,6 +266,31 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.priceOrderTotalSummarySection), ShoppingCartPageObjects.priceOrderTotalSummarySection.getObjectname());
 		}catch(Exception e) {
 			
+		}
+	}
+	
+	public void clearShoppingCartIfNotEmpty() {
+		try {
+			if(webdriverutil.objectExists(By.xpath(ShoppingCartPageObjects.itemCountOnMiniCart.getProperty()))) {
+				commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
+				commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartbtnGoToCart), ProductDetailsPageObjects.miniCartbtnGoToCart.getObjectname());
+			
+			List<WebElement> removeBtns = commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct.getProperty(), ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString());
+			int i=1;
+			for(WebElement removeBtn : removeBtns) {
+				commonFunction.clickIfElementPresent(removeBtn, "Shopping Cart Page - Remove Product #"+i);
+				i++;
+				if(i<removeBtns.size()) {
+				removeBtns = commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct.getProperty(), ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString());
+				}
+			}
+			}else {
+				report.updateTestLog("Empty Shopping Cart",
+						"Shopping Cart is already Empty", Status.DONE);
+			}
+		}catch(Exception e) {
+			report.updateTestLog("Empty Shopping Cart", "Something went wrong!" + e.toString(),
+					Status.FAIL);
 		}
 	}
 }
