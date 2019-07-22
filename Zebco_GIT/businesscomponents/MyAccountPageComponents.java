@@ -2,6 +2,7 @@ package businesscomponents;
 
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.List;
 
 import org.openqa.selenium.WebElement;
 
@@ -96,7 +97,7 @@ public class MyAccountPageComponents extends ReusableLibrary {
 			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lnkManageAddress), MyAccountPageObjects.lnkManageAddress.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lblDefaultBillingAddress), MyAccountPageObjects.lblDefaultBillingAddress.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.billingAddress), MyAccountPageObjects.billingAddress.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lnkEditDefalutBillingAddress), MyAccountPageObjects.lnkEditDefalutBillingAddress.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lnkEditDefalutBillingAddress), MyAccountPageObjects.lnkEditDefalutBillingAddress.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lblDefaultShippingAddress), MyAccountPageObjects.lblDefaultShippingAddress.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.shippingAddress), MyAccountPageObjects.shippingAddress.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.lnkEditDefaultShippingAddress), MyAccountPageObjects.lnkEditDefaultShippingAddress.getObjectname());
@@ -233,14 +234,22 @@ public class MyAccountPageComponents extends ReusableLibrary {
 	
 	public void validateRemoveAddress() {
 		try {
-			commonFunction.clickIfElementPresent(getPageElement(MyAccountPageObjects.lnkDeleteAddress), MyAccountPageObjects.lnkDeleteAddress.getObjectname());
-			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.msgNoAdditionalAddressEntry), MyAccountPageObjects.msgNoAdditionalAddressEntry.getObjectname())) {
+			
+			List<WebElement> deleteAddrLinks = commonFunction.getElementsByProperty(MyAccountPageObjects.lnkDeleteAddress.getProperty(), MyAccountPageObjects.lnkDeleteAddress.getLocatorType().toString());
+			for(WebElement deleteAddrlnk :deleteAddrLinks ) {
+			commonFunction.clickIfElementPresent(deleteAddrlnk, MyAccountPageObjects.lnkDeleteAddress.getObjectname());
+			if(commonFunction.verifyIfElementIsPresent(getPageElement(MyAccountPageObjects.msgAddressDeleted), MyAccountPageObjects.msgAddressDeleted.getObjectname())) {
 				report.updateTestLog("Verify Address is deleted",
 						"User is able to delete Address successfully", Status.PASS);
 			} else {
 				report.updateTestLog("Verify Address is deleted",
 						"User is NOT able to delete Address", Status.FAIL);
 			}
+			if(deleteAddrLinks.size()>1) {
+			deleteAddrLinks = commonFunction.getElementsByProperty(MyAccountPageObjects.lnkDeleteAddress.getProperty(), MyAccountPageObjects.lnkDeleteAddress.getLocatorType().toString());
+			}
+			}
+
 		}catch(Exception e) {
 			report.updateTestLog("My Account Page - Remove Address", "Something went wrong!" + e.toString(),
 					Status.FAIL);

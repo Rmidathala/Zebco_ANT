@@ -41,7 +41,7 @@ titleMyAccount("//h1[@class='page-title']/span",XPATH,"My Account Page - Title -
 	lnkManageAddress("//div[@class='block block-dashboard-addresses']/div/a",XPATH,"My Account Page - Manage Address Link"),
 	lblDefaultBillingAddress("//span[text()='Default Billing Address']",XPATH,"My Account Page - Label - Default Billing Address"),
 	billingAddress("//div[@class='box box-billing-address']/div/address",XPATH,"My Account Page - Billing Address"),
-	lnkEditDefalutBillingAddress("//div[@class='box box-billing-address']/div[2]/a",XPATH,"My Account Page - link Edit address in Defalut Billing Address"),
+	lnkEditDefalutBillingAddress("//div[@class='box box-address-billing']/div[2]/a",XPATH,"My Account Page - link Edit address in Defalut Billing Address"),
 	lnkEditDefalutBillingAddressSTG("//div[@class='box box-address-billing']/div[2]/a",XPATH,"My Account Page - link Edit address in Defalut Billing Address"),
 	
 	lblDefaultShippingAddress("//div[@class='box box-shipping-address']/strong/span",XPATH,"My Account Page - label - Default Shipping Address"),
@@ -68,6 +68,7 @@ titleMyAccount("//h1[@class='page-title']/span",XPATH,"My Account Page - Title -
 	btnSaveAddress("//button[@title='Save Address']",XPATH,"My Account Page - Add New Address Section - Button Save Address"),
 	msgNoAdditionalAddressEntry("//p[@class='empty']",XPATH,"My Account Page -Addtional Address Msg"),
 	lnkDeleteAddress("//a[@class='action delete']",XPATH,"My Account Page - Add New Address Section - Addtional Address - Delete Address link"),
+	msgAddressDeleted("//div[@class='message-success success message']/div",XPATH,"My Account Page - Address Book - msg: You deleted the address."),
 	lnkeditAdditionlAddress("(//a[@class='action edit'])[3]",XPATH,"My Account Page - Edit Address link"),
 	titleEditAddress("//h1[@class='page-title']/span",XPATH,"My Account Page - Edit Address Page - "),
 	

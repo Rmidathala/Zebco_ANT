@@ -163,13 +163,14 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			double priceBeforeQuantityIncrease = Double.parseDouble(commonFunction.getTextFromElement(getPageElement(ShoppingCartPageObjects.productSubTotal)).substring(1));
 			commonFunction.clearAndEnterText(getPageElement(ShoppingCartPageObjects.productQty), "2", ShoppingCartPageObjects.productQty.getObjectname());
 			commonFunction.hitEnterKey(getPageElement(ShoppingCartPageObjects.productQty), ShoppingCartPageObjects.productQty.getObjectname());
+			Thread.sleep(3000);
 			double priceAfterQuantityIncrease = Double.parseDouble(commonFunction.getTextFromElement(getPageElement(ShoppingCartPageObjects.productSubTotal)).substring(1));
 			if(priceAfterQuantityIncrease==(priceBeforeQuantityIncrease*2)) {
 				report.updateTestLog("Verify Quantity field in Shopping Cart is working",
-						"User is successfully Navigated to Checkout page", Status.PASS);
+						"Quantity of Product in Shopping Cart is updated successfully", Status.PASS);
 			} else {
-				report.updateTestLog("Verify Navigation to Checkout Page",
-						"User is NOT Navigated to Checkout Page", Status.FAIL);
+				report.updateTestLog("Verify Quantity field in Shopping Cart is working",
+						"Quantity of Product in Shopping Cart is updated successfully", Status.FAIL);
 			}
 		}catch(Exception e) {
 			report.updateTestLog("Validate Quantity in Shopping Cart", "Something went wrong!" + e.toString(),
@@ -280,10 +281,14 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			int i=1;
 			for(WebElement removeBtn : removeBtns) {
 				commonFunction.clickIfElementPresent(removeBtn, "Shopping Cart Page - Remove Product #"+i);
+				Thread.sleep(5000);
 				i++;
-				if(i<removeBtns.size()) {
-				removeBtns = commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct.getProperty(), ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString());
-				}
+					/*
+					 * if(i<removeBtns.size()) { removeBtns =
+					 * commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct
+					 * .getProperty(),
+					 * ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString()); }
+					 */
 			}
 			}else {
 				report.updateTestLog("Empty Shopping Cart",

@@ -75,7 +75,7 @@ public class CheckOutPageComponents extends ReusableLibrary {
 			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxCity), city, CheckoutPageObjects.txtBoxCity.getObjectname());
 			commonFunction.selectAnyElement(getPageElement(CheckoutPageObjects.drpDownState), state, CheckoutPageObjects.drpDownState.getObjectname());
 			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxZipCode), zipCode, CheckoutPageObjects.txtBoxZipCode.getObjectname());
-			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxPhoneNumber), phoneNumber, CheckoutPageObjects.txtBoxPhoneNumber.getObjectname());
+			commonFunction.clearAndEnterTextTabOut(getPageElement(CheckoutPageObjects.txtBoxPhoneNumber), phoneNumber, CheckoutPageObjects.txtBoxPhoneNumber.getObjectname());
 		}catch(Exception e) {
 			report.updateTestLog("Enter shipping Address Details", "Something went wrong!" + e.toString(),
 					Status.FAIL);
