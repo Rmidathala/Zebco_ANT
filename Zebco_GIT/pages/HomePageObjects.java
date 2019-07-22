@@ -3,7 +3,7 @@ package pages;
 import static pages.ObjectLocator.*;
 public enum HomePageObjects implements PageObjects {
 	
-	zeboLogo("//strong[@class='logo']/img",XPATH,"Home Page - Zebco Logo"),
+	zeboLogo("//a[@class='logo']/img",XPATH,"Home Page - Zebco Logo"),
 	zebcoLogoSTG("//a[@class='logo']/img",XPATH,"Home Page - Zebco Logo"),
 	
 	lnkHeaderCombos("//span[text()='Combos']",XPATH,"Home Page - Header link - Comboss"),

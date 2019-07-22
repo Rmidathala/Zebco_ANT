@@ -13,7 +13,7 @@ productImage("//img[@class='product-image-photo']",XPATH,"Product Listing page -
 productItemLink("//a[@class='product-item-link']",XPATH,"Product Listing Page - Product Item Link"),
 productPrice("//span[@class='price']",XPATH,"Product Listing Page - Product Price"),
 productRatings("//div[@class='pr-rating-stars']",XPATH,"Product Listing Page - Product Ratings"),
-btnproductViewDetails("//div[@id='addtocart']/a",XPATH,"Product Listing page - Product View Details Button"),
+btnproductViewDetails("//div[@class='float-lg-right w50 text-right add-to-cart-btn']/a",XPATH,"Product Listing page - Product View Details Button"),
 btnproductViewDetailsSTG("//div[@class='float-lg-right w50 text-right add-to-cart-btn']/a",XPATH,"Product Listing page - Product View Details Button"),
 btnShowAllCombos("showAll",ID,"Product Listing Page - Show All button"),
 
