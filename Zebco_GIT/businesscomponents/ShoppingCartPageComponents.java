@@ -163,7 +163,7 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			double priceBeforeQuantityIncrease = Double.parseDouble(commonFunction.getTextFromElement(getPageElement(ShoppingCartPageObjects.productSubTotal)).substring(1));
 			commonFunction.clearAndEnterText(getPageElement(ShoppingCartPageObjects.productQty), "2", ShoppingCartPageObjects.productQty.getObjectname());
 			commonFunction.hitEnterKey(getPageElement(ShoppingCartPageObjects.productQty), ShoppingCartPageObjects.productQty.getObjectname());
-			Thread.sleep(3000);
+			Thread.sleep(6000);
 			double priceAfterQuantityIncrease = Double.parseDouble(commonFunction.getTextFromElement(getPageElement(ShoppingCartPageObjects.productSubTotal)).substring(1));
 			if(priceAfterQuantityIncrease==(priceBeforeQuantityIncrease*2)) {
 				report.updateTestLog("Verify Quantity field in Shopping Cart is working",
@@ -282,13 +282,14 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			for(WebElement removeBtn : removeBtns) {
 				commonFunction.clickIfElementPresent(removeBtn, "Shopping Cart Page - Remove Product #"+i);
 				Thread.sleep(5000);
+
 				i++;
-					/*
-					 * if(i<removeBtns.size()) { removeBtns =
-					 * commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct
-					 * .getProperty(),
-					 * ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString()); }
-					 */
+					
+					  if(i<removeBtns.size()) { removeBtns =
+					  commonFunction.getElementsByProperty(ShoppingCartPageObjects.btnremoveProduct
+					  .getProperty(),
+					  ShoppingCartPageObjects.btnremoveProduct.getLocatorType().toString()); }
+					 
 			}
 			}else {
 				report.updateTestLog("Empty Shopping Cart",

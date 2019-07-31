@@ -40,8 +40,8 @@ public enum ShoppingCartPageObjects implements PageObjects {
 	priceSubTotalSummarySection("//tr[@class='totals sub']/td[@class='amount']/span",XPATH,"Shopping Cart Page - Summary Section - Price in $ Sub total"),
 	lblshippingCharges("//tr[@class='totals shipping excl']/th",XPATH,"Shopping Cart Page - Summary Section - Shipping Type label"),
 	priceShippingChargeSummarySection("//tr[@class='totals shipping excl']/td/span",XPATH,"Shopping Section - Price in $ Shipping Charge"),
-	lblOrderTotalSummarySection("//tr[@class='grand totals']/th",XPATH,"Shopping Cart Page - Summary Section - Label - Order Total"),
-	priceOrderTotalSummarySection("//td[@data-th='Order Total']/strong/span",XPATH,"Shopping Cart Page - Summary Section - Price in $ Order Total"),
+	lblOrderTotalSummarySection("//tr[@class='grand totals incl']/th",XPATH,"Shopping Cart Page - Summary Section - Label - Order Total"),
+	priceOrderTotalSummarySection("//tr[@class='grand totals incl']/td",XPATH,"Shopping Cart Page - Summary Section - Price in $ Order Total"),
 	
 	// Discount section
 	lblHaveADiscount("cart-discount-title",ID,"Shopping Cart Page - Discount Section - Have a discount code? Apply it here. "),

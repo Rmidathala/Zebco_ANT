@@ -264,6 +264,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	public void addProductToCompareFromProductDetailsPage() {
 		try {
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.lnkCompare), ProductDetailsPageObjects.lnkCompare.getObjectname());
+			Thread.sleep(4000);
 			if(commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.msgProductAddedtoCompare), ProductDetailsPageObjects.msgProductAddedtoWishList.getObjectname())) {
 				report.updateTestLog("Verify Product Added to Compare",
 						"Product is successfully added to Compare", Status.PASS);
@@ -388,6 +389,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	public void navigateToWriteAReviewPage() {
 		try {
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.writeAReviewLink), ProductDetailsPageObjects.writeAReviewLink.getObjectname());
+			Thread.sleep(5000);
 			if(commonFunction.isElementPresentContainsText(getPageElement(ProductDetailsPageObjects.titleWriteAReview), ProductDetailsPageObjects.titleWriteAReview.getObjectname(), "Write a Review")) {
 				report.updateTestLog("Verify User navigated to Write A Review Page",
 						"User is successfully navigated to Write A Review Page", Status.PASS);

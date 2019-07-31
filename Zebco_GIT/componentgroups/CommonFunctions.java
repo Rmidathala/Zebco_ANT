@@ -1,8 +1,5 @@
 package componentgroups;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -559,6 +556,9 @@ public class CommonFunctions extends ReusableLibrary {
 				return false;
 			}
 		} 
+		catch(TimeoutException te) {
+			return false;
+		}
 		catch (Exception e) {
 			report.updateTestLog("CLICK IF ELEMENT PRESENT", "Error in method - Error Description - " + e.toString(),
 					Status.FAIL);
@@ -1684,7 +1684,7 @@ public class CommonFunctions extends ReusableLibrary {
 	
 	public void hitEnterKey(WebElement ele, String objectName) {
 		
-		//ele.sendKeys(Keys.ENTER);
+		ele.sendKeys(Keys.ENTER);
 		//ele.sendKeys(Keys.RETURN);
 		Actions action = new Actions(driver.getWebDriver());
 		action.sendKeys(Keys.RETURN);

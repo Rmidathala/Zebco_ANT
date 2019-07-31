@@ -245,9 +245,12 @@ public class MyAccountPageComponents extends ReusableLibrary {
 				report.updateTestLog("Verify Address is deleted",
 						"User is NOT able to delete Address", Status.FAIL);
 			}
-			if(deleteAddrLinks.size()>1) {
-			deleteAddrLinks = commonFunction.getElementsByProperty(MyAccountPageObjects.lnkDeleteAddress.getProperty(), MyAccountPageObjects.lnkDeleteAddress.getLocatorType().toString());
-			}
+				/*
+				 * if(deleteAddrLinks.size()>1) { deleteAddrLinks =
+				 * commonFunction.getElementsByProperty(MyAccountPageObjects.lnkDeleteAddress.
+				 * getProperty(),
+				 * MyAccountPageObjects.lnkDeleteAddress.getLocatorType().toString()); }
+				 */
 			}
 
 		}catch(Exception e) {
