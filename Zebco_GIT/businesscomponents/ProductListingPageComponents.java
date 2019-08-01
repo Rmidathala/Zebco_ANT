@@ -345,6 +345,7 @@ public class ProductListingPageComponents extends ReusableLibrary {
 				commonFunction.mouseOver(products.get(i), "Product#: " + (i + 1));
 				commonFunction.mouseOver(compares.get(i), "Product#: " + (i + 1));
 				commonFunction.clickIfElementPresent(compares.get(i), "Add Product to Compare Product#: " + (i + 1));
+				Thread.sleep(5000);
 				if (commonFunction.verifyIfElementIsPresent(
 						getPageElement(ProductListingPageObjects.msgProductAddedToCompare),
 						ProductListingPageObjects.msgProductAddedToCompare.getObjectname())) {
@@ -379,6 +380,7 @@ public class ProductListingPageComponents extends ReusableLibrary {
 				commonFunction.scrollIntoView(products.get(i));
 				commonFunction.mouseOver(products.get(i), "Product#: " + (i + 1));
 				commonFunction.clickIfElementPresent(compares.get(i), "Product#: " + (i + 1));
+				Thread.sleep(5000);
 				if (commonFunction.verifyIfElementIsPresent(
 						getPageElement(ProductListingPageObjects.msgProductAddedToCompare),
 						ProductListingPageObjects.msgProductAddedToCompare.getObjectname())) {
@@ -457,6 +459,7 @@ public class ProductListingPageComponents extends ReusableLibrary {
 						ProductListingPageObjects.btnRemoveProductFromWishList.getLocatorType().toString());
 				for (int i = 0; i < closeBtns.size(); i++) {
 					commonFunction.clickIfElementPresent(closeBtns.get(0), "Product#: " + (i + 1) + " is removed");
+					Thread.sleep(5000);
 					if (commonFunction.verifyIfElementIsPresent(
 							getPageElement(ProductListingPageObjects.msgproductRemovedFromWishList),
 							ProductListingPageObjects.msgproductRemovedFromWishList.getObjectname())) {
