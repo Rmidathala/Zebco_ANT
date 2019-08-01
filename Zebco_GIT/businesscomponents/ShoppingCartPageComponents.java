@@ -98,6 +98,7 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 	
 	public void navigateToCheckOutPage() {
 		try {
+			driver.navigate().refresh();
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.btnGoToCheckout), ShoppingCartPageObjects.btnGoToCheckout.getObjectname());
 			if(commonFunction.isElementPresentContainsText(getPageElement(CheckoutPageObjects.titleShippingAddress), CheckoutPageObjects.titleShippingAddress.getObjectname(), "Shipping Address")) {
 				report.updateTestLog("Verify Navigation to Checkout Page",
@@ -163,7 +164,7 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			double priceBeforeQuantityIncrease = Double.parseDouble(commonFunction.getTextFromElement(getPageElement(ShoppingCartPageObjects.productSubTotal)).substring(1));
 			commonFunction.clearAndEnterText(getPageElement(ShoppingCartPageObjects.productQty), "2", ShoppingCartPageObjects.productQty.getObjectname());
 			commonFunction.hitEnterKey(getPageElement(ShoppingCartPageObjects.productQty), ShoppingCartPageObjects.productQty.getObjectname());
-			Thread.sleep(6000);
+			Thread.sleep(8000);
 			double priceAfterQuantityIncrease = Double.parseDouble(commonFunction.getTextFromElement(getPageElement(ShoppingCartPageObjects.productSubTotal)).substring(1));
 			if(priceAfterQuantityIncrease==(priceBeforeQuantityIncrease*2)) {
 				report.updateTestLog("Verify Quantity field in Shopping Cart is working",
