@@ -100,7 +100,7 @@ public enum HomePageObjects implements PageObjects {
 	lblNewsletterSignUp("footer-newsletter-title",ID,"Home Page footer - News Letter Sign up label"),
 	txtBoxNewletterEmail("//input[@id='footer-newsletter-input']",XPATH,"Home Page Footer - Newsletter - Email text box"),
 	btnGoArrow("//button[@id='footer-newsletter-button']",XPATH,"Home Page Footer - Newsletter Go Arrow button"),
-	msgSuccessNewsLetter("//div[@class='messages']/div/div",XPATH,"Newletter sign up success message - Thank you for your subscription."),
+	msgSuccessNewsLetter("(//div[@class='messages']/div/div)[1]",XPATH,"Newletter sign up success message - Thank you for your subscription."),
 	
 	// Connect with US 
 	lblConnectWithUS("footer-social-links-title",ID,"Footer - Connect With Us Lable"),

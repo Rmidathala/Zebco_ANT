@@ -407,7 +407,7 @@ public class HomePageComponents extends ReusableLibrary {
 				commonFunction.clearAndEnterText(getPageElement(HomePageObjects.txtBoxNewletterEmail), email, HomePageObjects.txtBoxNewletterEmail.getObjectname());
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.btnGoArrow),
 						HomePageObjects.btnGoArrow.getObjectname());
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.msgSuccessNewsLetter), HomePageObjects.msgSuccessNewsLetter.getObjectname(), "Thank you for your subscription.")){
 					report.updateTestLog("Verify user is Subscribed successfully to Newsletter",
 							"User is successfully Subscribed to newsletter", Status.PASS);
@@ -431,7 +431,7 @@ public class HomePageComponents extends ReusableLibrary {
 				commonFunction.clearAndEnterText(getPageElement(HomePageObjects.txtBoxNewletterEmail), email, HomePageObjects.txtBoxNewletterEmail.getObjectname());
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.btnGoArrow),
 						HomePageObjects.btnGoArrow.getObjectname());
-				Thread.sleep(3000);
+				Thread.sleep(8000);
 				if(commonFunction.isElementPresentContainsText(getPageElement(HomePageObjects.msgSuccessNewsLetter), HomePageObjects.msgSuccessNewsLetter.getObjectname(), "There was a problem with the subscription: This email address is already subscribed.")){
 					report.updateTestLog("Verify error message: There was a problem with the subscription: This email address is already subscribed. is displayed on subscribing already subscribed email address",
 							"Error message is displayed for already subscribed Email Address", Status.PASS);

@@ -138,6 +138,7 @@ public class ProductListingPageComponents extends ReusableLibrary {
 				commonFunction.verifyIfElementIsPresent(productRatings.get(i), "Product Rating of Product#: " + i);
 				commonFunction.scrollIntoView(products.get(i));
 				commonFunction.mouseOver(products.get(i), "Product#: " + i);
+				Thread.sleep(1000);
 				commonFunction.verifyIfElementIsPresent(productViewDetails.get(i),
 						"Product - View Details of Product#: " + i);
 			}
