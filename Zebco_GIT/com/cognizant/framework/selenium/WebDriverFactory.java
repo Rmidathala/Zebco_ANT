@@ -14,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -40,8 +41,7 @@ public class WebDriverFactory {
 	 * Function to return the appropriate {@link WebDriver} object based on the
 	 * parameters passed
 	 * 
-	 * @param browser
-	 *            The {@link Browser} to be used for the test execution
+	 * @param browser The {@link Browser} to be used for the test execution
 	 * @return The corresponding {@link WebDriver} object changed by Satyajit on
 	 *         04-04-2017 02:10pm IST
 	 */
@@ -52,17 +52,15 @@ public class WebDriverFactory {
 
 		switch (browser) {
 		case CHROME:
-				// Takes the system proxy settings automatically
+			// Takes the system proxy settings automatically
 
 			System.setProperty("webdriver.chrome.driver", properties.getProperty("ChromeDriverPath"));
-
-		 
 
 			ChromeOptions options = new ChromeOptions();
 			DesiredCapabilities capabilities_chrome = DesiredCapabilities.chrome();
 			capabilities_chrome.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
 			options.addArguments("test-type");
-			//options.addArguments("start-maximized");
+			// options.addArguments("start-maximized");
 
 			options.addArguments("--js-flags=--expose-gc");
 			options.addArguments("--enable-precise-memory-info");
@@ -87,47 +85,53 @@ public class WebDriverFactory {
 
 		case FIREFOX:
 			// Takes the system proxy settings automatically
-			System.setProperty("webdriver.gecko.driver", properties.getProperty("GeckoDriverPath"));
-			DesiredCapabilities capabilities_firefox = DesiredCapabilities.firefox();
-			//Set Firefox Headless mode as TRUE
+			// Set Firefox Headless mode as TRUE
 			FirefoxBinary firefoxBinary = new FirefoxBinary();
 			firefoxBinary.addCommandLineOptions("--headless");
+			System.setProperty("webdriver.gecko.driver", properties.getProperty("GeckoDriverPath"));
+			DesiredCapabilities capabilities_firefox = DesiredCapabilities.firefox();
 			capabilities_firefox.setCapability("marionette", true);
 			capabilities_firefox.setCapability("acceptInsecureCerts", true);
 			capabilities_firefox.setCapability("assume_untrusted_cert_issuer", true);
 			capabilities_firefox.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-			driver = new FirefoxDriver(capabilities_firefox);
+			FirefoxOptions firefoxOptions = new FirefoxOptions();
+			firefoxOptions.setBinary(firefoxBinary);
+			firefoxOptions.addCapabilities(capabilities_firefox);
+			// firefoxOptions.addTo(capabilities_firefox);
+			driver = new FirefoxDriver(firefoxOptions);
 
 			break;
 
 		case GHOST_DRIVER:
 			// Takes the system proxy settings automatically (I think!)
 
-			System.setProperty("phantomjs.binary.path",
-			properties.getProperty("PhantomJSPath"));
+			System.setProperty("phantomjs.binary.path", properties.getProperty("PhantomJSPath"));
 			driver = new PhantomJSDriver();
 			break;
 
-			/*System.setProperty("webdriver.chrome.driver", properties.getProperty("ChromeDriverPath"));
-			ChromeOptions options2 = new ChromeOptions();
-			DesiredCapabilities capabilities_chrome2 = DesiredCapabilities.chrome();
-			capabilities_chrome2.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-			options2.addArguments("test-type");
-			options2.addArguments("start-maximized");
-			options2.addArguments("--window-size=1366,768");
-			options2.addArguments("--headless");
-			options2.addArguments("--disable-gpu");*/
-			//options2.addArguments("--no-sandbox");
-			//options2.addArguments("--disable-dev-shm-usage");
+		/*
+		 * System.setProperty("webdriver.chrome.driver",
+		 * properties.getProperty("ChromeDriverPath")); ChromeOptions options2 = new
+		 * ChromeOptions(); DesiredCapabilities capabilities_chrome2 =
+		 * DesiredCapabilities.chrome();
+		 * capabilities_chrome2.setCapability(CapabilityType.ForSeleniumServer.
+		 * ENSURING_CLEAN_SESSION, true); options2.addArguments("test-type");
+		 * options2.addArguments("start-maximized");
+		 * options2.addArguments("--window-size=1366,768");
+		 * options2.addArguments("--headless"); options2.addArguments("--disable-gpu");
+		 */
+		// options2.addArguments("--no-sandbox");
+		// options2.addArguments("--disable-dev-shm-usage");
 
-
-			// options.addArguments("--dns-prefetch-disable");
-			/*Map<String, Object> prefs2 = new HashMap<String, Object>();
-			prefs2.put("credentials_enable_service", false);
-			options2.setExperimentalOption("prefs", prefs2);
-
-			driver = new ChromeDriver(options2);*/
-			//break;
+		// options.addArguments("--dns-prefetch-disable");
+		/*
+		 * Map<String, Object> prefs2 = new HashMap<String, Object>();
+		 * prefs2.put("credentials_enable_service", false);
+		 * options2.setExperimentalOption("prefs", prefs2);
+		 * 
+		 * driver = new ChromeDriver(options2);
+		 */
+		// break;
 
 		case INTERNET_EXPLORER:
 			// Takes the system proxy settings automatically
@@ -164,12 +168,11 @@ public class WebDriverFactory {
 
 			driver = new SafariDriver();
 			break;
-		
+
 		case HTML_UNIT:
-			driver=new HtmlUnitDriver();
+			driver = new HtmlUnitDriver();
 			break;
-			
-		
+
 		default:
 			throw new FrameworkException("Unhandled browser!");
 		}
@@ -197,14 +200,11 @@ public class WebDriverFactory {
 	 * Function to return the {@link RemoteWebDriver} object based on the parameters
 	 * passed
 	 * 
-	 * @param browser
-	 *            The {@link Browser} to be used for the test execution
-	 * @param browserVersion
-	 *            The browser version to be used for the test execution
-	 * @param platform
-	 *            The {@link Platform} to be used for the test execution
-	 * @param remoteUrl
-	 *            The URL of the remote machine to be used for the test execution
+	 * @param browser        The {@link Browser} to be used for the test execution
+	 * @param browserVersion The browser version to be used for the test execution
+	 * @param platform       The {@link Platform} to be used for the test execution
+	 * @param remoteUrl      The URL of the remote machine to be used for the test
+	 *                       execution
 	 * @return The corresponding {@link RemoteWebDriver} object
 	 */
 	public static WebDriver getRemoteWebDriver(Browser browser, String browserVersion, Platform platform,
@@ -259,10 +259,9 @@ public class WebDriverFactory {
 	 * Function to return the {@link RemoteWebDriver} object based on the parameters
 	 * passed
 	 * 
-	 * @param browser
-	 *            The {@link Browser} to be used for the test execution
-	 * @param remoteUrl
-	 *            The URL of the remote machine to be used for the test execution
+	 * @param browser   The {@link Browser} to be used for the test execution
+	 * @param remoteUrl The URL of the remote machine to be used for the test
+	 *                  execution
 	 * @return The corresponding {@link RemoteWebDriver} object
 	 */
 	public static WebDriver getRemoteWebDriver(Browser browser, String remoteUrl) {
@@ -273,9 +272,8 @@ public class WebDriverFactory {
 	 * Function to return the {@link ChromeDriver} object emulating the device
 	 * specified by the user
 	 * 
-	 * @param deviceName
-	 *            The name of the device to be emulated (check Chrome Dev Tools for
-	 *            a list of available devices)
+	 * @param deviceName The name of the device to be emulated (check Chrome Dev
+	 *                   Tools for a list of available devices)
 	 * @return The corresponding {@link ChromeDriver} object
 	 */
 	public static WebDriver getEmulatedWebDriver(String deviceName) {
@@ -304,11 +302,10 @@ public class WebDriverFactory {
 	 * Function to return the {@link RemoteWebDriver} object emulating the device
 	 * specified by the user
 	 * 
-	 * @param deviceName
-	 *            The name of the device to be emulated (check Chrome Dev Tools for
-	 *            a list of available devices)
-	 * @param remoteUrl
-	 *            The URL of the remote machine to be used for the test execution
+	 * @param deviceName The name of the device to be emulated (check Chrome Dev
+	 *                   Tools for a list of available devices)
+	 * @param remoteUrl  The URL of the remote machine to be used for the test
+	 *                   execution
 	 * @return The corresponding {@link RemoteWebDriver} object
 	 */
 	public static WebDriver getEmulatedRemoteWebDriver(String deviceName, String remoteUrl) {
@@ -324,14 +321,10 @@ public class WebDriverFactory {
 	 * Function to return the {@link ChromeDriver} object emulating the device
 	 * attributes specified by the user
 	 * 
-	 * @param deviceWidth
-	 *            The width of the device to be emulated (in pixels)
-	 * @param deviceHeight
-	 *            The height of the device to be emulated (in pixels)
-	 * @param devicePixelRatio
-	 *            The device's pixel ratio
-	 * @param userAgent
-	 *            The user agent string
+	 * @param deviceWidth      The width of the device to be emulated (in pixels)
+	 * @param deviceHeight     The height of the device to be emulated (in pixels)
+	 * @param devicePixelRatio The device's pixel ratio
+	 * @param userAgent        The user agent string
 	 * @return The corresponding {@link ChromeDriver} object
 	 */
 	public static WebDriver getEmulatedWebDriver(int deviceWidth, int deviceHeight, float devicePixelRatio,
@@ -371,16 +364,12 @@ public class WebDriverFactory {
 	 * Function to return the {@link RemoteWebDriver} object emulating the device
 	 * attributes specified by the user
 	 * 
-	 * @param deviceWidth
-	 *            The width of the device to be emulated (in pixels)
-	 * @param deviceHeight
-	 *            The height of the device to be emulated (in pixels)
-	 * @param devicePixelRatio
-	 *            The device's pixel ratio
-	 * @param userAgent
-	 *            The user agent string
-	 * @param remoteUrl
-	 *            The URL of the remote machine to be used for the test execution
+	 * @param deviceWidth      The width of the device to be emulated (in pixels)
+	 * @param deviceHeight     The height of the device to be emulated (in pixels)
+	 * @param devicePixelRatio The device's pixel ratio
+	 * @param userAgent        The user agent string
+	 * @param remoteUrl        The URL of the remote machine to be used for the test
+	 *                         execution
 	 * @return The corresponding {@link RemoteWebDriver} object
 	 */
 	public static WebDriver getEmulatedRemoteWebDriver(int deviceWidth, int deviceHeight, float devicePixelRatio,
