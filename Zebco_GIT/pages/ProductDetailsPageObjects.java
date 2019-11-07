@@ -13,9 +13,9 @@ public enum ProductDetailsPageObjects implements PageObjects{
 	answeredQuestionLink("//a[@class='pr-snippet-qa-answer-link']",XPATH,"product Details Page - Answsered Question link"),
 	askAQuestionLink("//a[@class='pr-ask-question-link']",XPATH,"Product Details page - Ask A Question Link"),
 	viewStoreLocationlink("//a[text()='View Store Locations']",XPATH,"Product Details Page - View Store Location link"),
-	productPrice("//span[@class='price-container tax weee']/span",XPATH,"Product Details page - Product Price in $"),
+	productPrice("(//span[@class='price'])[1]",XPATH,"Product Details page - Product Price in $"),
 	productPriceSTG("//span[@class='price-container price-final_price tax weee']/span/span",XPATH,"Product Details page - Product Price in $"),
-	productDescription("//div[@class='description']/p",XPATH,"Product Details page - Product Description"),
+	productDescription("//div[@class='description']",XPATH,"Product Details page - Product Description"),
 	productDescriptionSTG("//div[@class='description']",XPATH,"Product Details page - Product Description"),
 	
 	productModels("//div[contains(@id,'grouped-pdp-simple')]",XPATH,"Product Details Page - Product Models"),

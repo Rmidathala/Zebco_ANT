@@ -98,7 +98,8 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 	
 	public void navigateToCheckOutPage() {
 		try {
-			driver.navigate().refresh();
+			//driver.navigate().refresh();
+			Thread.sleep(10000);
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.btnGoToCheckout), ShoppingCartPageObjects.btnGoToCheckout.getObjectname());
 			if(commonFunction.isElementPresentContainsText(getPageElement(CheckoutPageObjects.titleShippingAddress), CheckoutPageObjects.titleShippingAddress.getObjectname(), "Shipping Address")) {
 				report.updateTestLog("Verify Navigation to Checkout Page",

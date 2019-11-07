@@ -3,6 +3,7 @@ package businesscomponents;
 import java.time.LocalTime;
 import java.time.ZoneId;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import supportlibraries.ReusableLibrary;
@@ -118,17 +119,23 @@ public class CheckOutPageComponents extends ReusableLibrary {
 	
 	public void enterPaymentDetailsAndPlaceOrder() {
 		try {
+
 			String creditCardNumber = dataTable.getData("General_Data","CreditCard");
 			String expMonth = dataTable.getData("General_Data","ExpMonth");
 			String expYear = dataTable.getData("General_Data","ExpYear");
 			String cvv = dataTable.getData("General_Data","CVV");
+			String nameCard = dataTable.getData("General_Data","NameOnCard");
 			if(driver.getCurrentUrl().contains("mcstaging")) {
 				commonFunction.clickIfElementPresentJavaScript(getPageElement(CheckoutPageObjects.checkBoxCreditCard), CheckoutPageObjects.checkBoxCreditCard.getObjectname());
 			}
+			Thread.sleep(10000);
+			driver.switchTo().frame(driver.findElement(By.id("xiintercept-iframe")));
+			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxNameOnCard), nameCard, CheckoutPageObjects.txtBoxNameOnCard.getObjectname());
 			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxCreditCard), creditCardNumber, CheckoutPageObjects.txtBoxCreditCard.getObjectname());
 			commonFunction.selectAnyElementByValue(getPageElement(CheckoutPageObjects.drpDownExpiryMonth), expMonth, CheckoutPageObjects.drpDownExpiryMonth.getObjectname());
 			commonFunction.selectAnyElementByValue(getPageElement(CheckoutPageObjects.drpDonwExpiryYear), expYear, CheckoutPageObjects.drpDonwExpiryYear.getObjectname());
 			commonFunction.clearAndEnterText(getPageElement(CheckoutPageObjects.txtBoxCVV), cvv, CheckoutPageObjects.txtBoxCVV.getObjectname());
+			driver.switchTo().defaultContent();
 			if(driver.getCurrentUrl().contains("mcstaging")) {
 				commonFunction.verifyIfElementIsPresent(getPageElement(CheckoutPageObjects.btnPlaceOrderSTG), CheckoutPageObjects.btnPlaceOrderSTG.getObjectname());
 			}else {

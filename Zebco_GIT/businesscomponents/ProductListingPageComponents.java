@@ -506,4 +506,26 @@ public class ProductListingPageComponents extends ReusableLibrary {
 					"Something went wrong!" + e.toString(), Status.FAIL);
 		}
 	}
+	public void validateShowAllButtonInPLP() {
+		try {
+			List<WebElement> products = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.products.getProperty(),
+					ProductListingPageObjects.products.getLocatorType().toString());
+			commonFunction.clickIfElementPresent(getPageElement(ProductListingPageObjects.btnShowAllCombos),
+					ProductListingPageObjects.btnShowAllCombos.getObjectname());
+			Thread.sleep(5000);
+			List<WebElement> productsAfterShowAll = commonFunction.getElementsByProperty(
+					ProductListingPageObjects.products.getProperty(),
+					ProductListingPageObjects.products.getLocatorType().toString());
+			if (products.size() < productsAfterShowAll.size()) {
+				report.updateTestLog("Verify Show All Combos button on Product Listing Page",
+						"Show All Button on Product Listing Page is working fine", Status.PASS);
+			} else {
+				report.updateTestLog("Verify Show All Combos button on Product Listing Page",
+						"Show All Combos Button on the Product Listing Page is not Working", Status.FAIL);
+			}
+		} catch (Exception e) {
+			report.updateTestLog("Validate show all button in Product Listing Page", "Something went wrong!" + e.toString(), Status.FAIL);
+		}
+	}
 }

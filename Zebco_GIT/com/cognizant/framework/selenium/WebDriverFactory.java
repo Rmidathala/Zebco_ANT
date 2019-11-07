@@ -85,22 +85,17 @@ public class WebDriverFactory {
 
 		case FIREFOX:
 			// Takes the system proxy settings automatically
-			// Set Firefox Headless mode as TRUE
-			FirefoxBinary firefoxBinary = new FirefoxBinary();
-			firefoxBinary.addCommandLineOptions("--headless");
-			System.setProperty("webdriver.gecko.driver", properties.getProperty("GeckoDriverPath"));
-			DesiredCapabilities capabilities_firefox = DesiredCapabilities.firefox();
-			capabilities_firefox.setCapability("marionette", true);
-			capabilities_firefox.setCapability("acceptInsecureCerts", true);
-			capabilities_firefox.setCapability("assume_untrusted_cert_issuer", true);
-			capabilities_firefox.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-			FirefoxOptions firefoxOptions = new FirefoxOptions();
-			firefoxOptions.setBinary(firefoxBinary);
-			firefoxOptions.addCapabilities(capabilities_firefox);
-			// firefoxOptions.addTo(capabilities_firefox);
-			driver = new FirefoxDriver(firefoxOptions);
+						//Set Firefox Headless mode as TRUE
+						System.setProperty("webdriver.gecko.driver", properties.getProperty("GeckoDriverPath"));
+						FirefoxOptions firefoxOptions = new FirefoxOptions();
+					    firefoxOptions.setCapability("marionette", true);
+					    firefoxOptions.setCapability("acceptInsecureCerts", true);
+					    firefoxOptions.setCapability("assume_untrusted_cert_issuer", true);
+					    firefoxOptions.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+					    firefoxOptions.setHeadless(true);
+						driver = new FirefoxDriver(firefoxOptions);
 
-			break;
+						break;
 
 		case GHOST_DRIVER:
 			// Takes the system proxy settings automatically (I think!)

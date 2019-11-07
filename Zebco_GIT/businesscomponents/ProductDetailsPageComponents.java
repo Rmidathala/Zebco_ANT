@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import supportlibraries.ReusableLibrary;
@@ -99,16 +100,16 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainName), ProductDetailsPageObjects.productMainName.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainStarRating), ProductDetailsPageObjects.productMainStarRating.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productRatingInNumber), ProductDetailsPageObjects.productRatingInNumber.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.ProductReviewCountlink), ProductDetailsPageObjects.ProductReviewCountlink.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.ProductReviewCountlink), ProductDetailsPageObjects.ProductReviewCountlink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.writeAReviewLink), ProductDetailsPageObjects.writeAReviewLink.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.titleQAndA), ProductDetailsPageObjects.titleQAndA.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.divQuestionAnsweredCount), ProductDetailsPageObjects.divQuestionAnsweredCount.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.answeredQuestionLink), ProductDetailsPageObjects.answeredQuestionLink.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.titleQAndA), ProductDetailsPageObjects.titleQAndA.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.divQuestionAnsweredCount), ProductDetailsPageObjects.divQuestionAnsweredCount.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.answeredQuestionLink), ProductDetailsPageObjects.answeredQuestionLink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.askAQuestionLink), ProductDetailsPageObjects.askAQuestionLink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.viewStoreLocationlink), ProductDetailsPageObjects.viewStoreLocationlink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productPrice), ProductDetailsPageObjects.productPrice.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productDescription), ProductDetailsPageObjects.productDescription.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productModels), ProductDetailsPageObjects.productModels.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productModels), ProductDetailsPageObjects.productModels.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantitylabel), ProductDetailsPageObjects.quantitylabel.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.quantityDecrementor), ProductDetailsPageObjects.quantityDecrementor.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productQuantity), ProductDetailsPageObjects.productQuantity.getObjectname());
@@ -279,7 +280,9 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	
 	public void addProductToCart() {
 		try {
-			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.btnAddToCart), ProductDetailsPageObjects.btnAddToCart.getObjectname());
+			Thread.sleep(10000);
+			driver.findElement(By.xpath("//*[@id='product-addtocart-button']")).click();
+			//commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.btnAddToCart), ProductDetailsPageObjects.btnAddToCart.getObjectname());
 			Thread.sleep(8000);
 			if(!driver.getTestParameters().getBrowser().getValue().contains("IE")) {
 			if(commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.msgProductAdded), ProductDetailsPageObjects.msgProductAdded.getObjectname())) {
@@ -589,7 +592,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	
 	public void navigateToShoppingCartPage() {
 		try {
-			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
+			//commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartbtnGoToCart), ProductDetailsPageObjects.miniCartbtnGoToCart.getObjectname());
 			if(commonFunction.isElementPresentContainsText(getPageElement(ShoppingCartPageObjects.titleShoppingCart), ShoppingCartPageObjects.titleShoppingCart.getObjectname(), "Shopping Cart")) {
 				report.updateTestLog("Verify user navigated to Shopping Cart",
