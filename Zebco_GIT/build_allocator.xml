@@ -33,13 +33,7 @@
 			<classpath refid="libs.craft.selenium" />
 		</java>
 		
-		<fail message="Selenium tests failed!">
-            <condition>
-                <not>
-                    <equals arg1="${selenium.tests.exitstatus}" arg2="0"/>
-                </not>
-            </condition>
-        </fail>
+		
 	</target>
 	
 	<target name="main" depends="clean,selenium-ui-tests" />
