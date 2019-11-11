@@ -592,8 +592,13 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	
 	public void navigateToShoppingCartPage() {
 		try {
-			//commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
+			if (driver.findElement(By.xpath("//a[@class='action viewcart']")).isDisplayed()) {
+				commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartbtnGoToCart), ProductDetailsPageObjects.miniCartbtnGoToCart.getObjectname());
+			}
+			else {
+			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
 			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartbtnGoToCart), ProductDetailsPageObjects.miniCartbtnGoToCart.getObjectname());
+			}
 			if(commonFunction.isElementPresentContainsText(getPageElement(ShoppingCartPageObjects.titleShoppingCart), ShoppingCartPageObjects.titleShoppingCart.getObjectname(), "Shopping Cart")) {
 				report.updateTestLog("Verify user navigated to Shopping Cart",
 						"User Successfully navigated to Shopping Cart Page", Status.PASS);
