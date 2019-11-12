@@ -101,7 +101,7 @@ public class CheckOutPageComponents extends ReusableLibrary {
 	
 	public void navigateToPaymentPage() {
 		try {
-			driver.navigate().refresh();
+			//driver.navigate().refresh();
 			commonFunction.clickIfElementPresent(getPageElement(CheckoutPageObjects.btnNext), CheckoutPageObjects.btnNext.getObjectname());
 			if(commonFunction.isElementPresentContainsText(getPageElement(CheckoutPageObjects.titlePaymentMethod), CheckoutPageObjects.titlePaymentMethod.getObjectname(), "Payment Method:")) {
 				report.updateTestLog("Verify user navigated to Payment Page",
