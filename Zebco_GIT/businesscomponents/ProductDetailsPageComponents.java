@@ -284,7 +284,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			driver.findElement(By.xpath("//*[@id='product-addtocart-button']")).click();
 			//commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.btnAddToCart), ProductDetailsPageObjects.btnAddToCart.getObjectname());
 			Thread.sleep(8000);
-			if(!driver.getTestParameters().getBrowser().getValue().contains("IE")) {
+			if(!driver.getTestParameters().getBrowser().getValue().contains("IE")||!driver.getTestParameters().getBrowser().getValue().contains("FF")) {
 			if(commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.msgProductAdded), ProductDetailsPageObjects.msgProductAdded.getObjectname())) {
 				report.updateTestLog("Verify Product Added to the cart",
 						"Product is successfully added to the cart", Status.PASS);
