@@ -1204,8 +1204,10 @@ public class HomePageComponents extends ReusableLibrary {
 		public void validateAdventureTab() {
 			try {
 				Thread.sleep(10000);
-				commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
-						HomePageObjects.btnStartAnAdventure.getObjectname());	
+				//commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
+						//HomePageObjects.btnStartAnAdventure.getObjectname());	
+				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.btnStartAnAdventure),
+						HomePageObjects.btnStartAnAdventure.getObjectname());
 				Thread.sleep(10000);
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lblGrabRodAndReel), HomePageObjects.lblGrabRodAndReel.getObjectname());
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.msgPickTopicBelow), HomePageObjects.msgPickTopicBelow.getObjectname());
