@@ -128,7 +128,8 @@ public enum HomePageObjects implements PageObjects {
 	
 	
 	// Adventure Tab
-	btnStartAnAdventure("adventureButton",ID,"Home Page - Start and Adventure Button"),
+	//btnStartAnAdventure("adventureButton",ID,"Home Page - Start and Adventure Button"),
+	btnStartAnAdventure("//*[@id='adventureButton']",XPATH,"Home Page - Start and Adventure Button"),
 	lblGrabRodAndReel("//div[@class='adventure w-100']/h2",XPATH,"Adventure Page - Grab a Rod & Reel. Choose Your Adventure."),
 	msgPickTopicBelow("//div[@class='adventure w-100']/p",XPATH,"Adventure Page - Message - Pick a topic below and we'll hook you up with everything you need to know."),
 	
