@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
@@ -1209,6 +1210,7 @@ public class HomePageComponents extends ReusableLibrary {
 				//driver.navigate().refresh();
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.btnStartAnAdventure),
 						HomePageObjects.btnStartAnAdventure.getObjectname());
+				//driver.findElement(By.xpath("//*[@id='adventureButton']")).click();
 				Thread.sleep(5000);
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.lblGrabRodAndReel), HomePageObjects.lblGrabRodAndReel.getObjectname());
 				commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.msgPickTopicBelow), HomePageObjects.msgPickTopicBelow.getObjectname());
@@ -1440,6 +1442,21 @@ public class HomePageComponents extends ReusableLibrary {
 						Status.FAIL);
 			}
 		}
+		public void validateButtonStartAnAdventure() {
+			try {
+			commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.btnStartAnAdventure),
+						HomePageObjects.btnStartAnAdventure.getObjectname());
+					
+				
+					report.updateTestLog("Home Page - Adventure Tab validation",
+							"Start and adventure button is clickable", Status.PASS);
+				
+			}catch(Exception e) {
+				report.updateTestLog("Home Page - Adventure Tab validation", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+			}
+		
 }
 
 
