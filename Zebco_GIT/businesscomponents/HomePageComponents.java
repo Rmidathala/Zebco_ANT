@@ -724,6 +724,7 @@ public class HomePageComponents extends ReusableLibrary {
 			try {
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.lnkHeaderCombos),
 						HomePageObjects.lnkHeaderCombos.getObjectname());
+				Thread.sleep(5000);
 				if (driver.getCurrentUrl().contains("/fishing-combos") || driver.getCurrentUrl().contains("/combos")) {
 					report.updateTestLog("Verify Navigation Menu link -Combos",
 							"User is successfully Navigated to Combos Page", Status.PASS);

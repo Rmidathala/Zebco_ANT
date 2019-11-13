@@ -259,6 +259,7 @@ public class ProductListingPageComponents extends ReusableLibrary {
 					ProductListingPageObjects.btnproductViewDetails.getProperty(),
 					ProductListingPageObjects.btnproductViewDetails.getLocatorType().toString());
 			}
+			Thread.sleep(5000);
 			commonFunction.scrollIntoView(products.get(0));
 			commonFunction.mouseOver(products.get(0), "Product#: " + 1);
 			commonFunction.clickIfElementPresent(productViewDetails.get(0), "Product - View Details of Product#: " + 1);

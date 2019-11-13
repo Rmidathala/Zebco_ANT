@@ -23,7 +23,7 @@ public enum ProductDetailsPageObjects implements PageObjects{
 	quantityDecrementor("qty-decrementor",ID,"Product Details Page - Product Decrementor"),
 	productQuantity("//input[@title='Quantity']",XPATH,"Product Details Page - Product Quantity"),
 	quantityIncrementor("qty-incrementor",ID,"Product Details Page - Product Incrementor"),
-	btnAddToCart("//div[@class='actions']/button[@title='Add to Cart']",XPATH,"Product Details Page - Button Add to Cart"),
+	btnAddToCart("//*[@id='product-addtocart-button']",XPATH,"Product Details Page - Button Add to Cart"),
 	msgProductAdded("((//div[@class='messages'])[1]",XPATH,"Product Details Page - Product Added to Cart Message"),
 	
 	lnkWishList("//a[@data-action='add-to-wishlist']",XPATH,"Product Details Page - Link - Wish List"),
@@ -147,6 +147,7 @@ public enum ProductDetailsPageObjects implements PageObjects{
 	miniCartCartPrice("//div[@class='amount price-container']/span/span",XPATH,"Mini Cart - Cart Sub Toal in $"),
 	miniCartbtnGoToCart("//a[@class='action viewcart']",XPATH,"Mini Cart - Button - Go To Cart"),
 	miniCartIcon("//a[@title='Link to Mini Cart']",XPATH,"Product Details Page - Mini Cart Icon"),
+	miniCartCounterqty("(//*[@class='counter qty'])[1]",XPATH,"Product Details Page - Mini Cart Icon"),
 	
 	
 	
