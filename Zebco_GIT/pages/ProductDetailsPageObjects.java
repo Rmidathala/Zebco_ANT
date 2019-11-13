@@ -24,7 +24,7 @@ public enum ProductDetailsPageObjects implements PageObjects{
 	productQuantity("//input[@title='Quantity']",XPATH,"Product Details Page - Product Quantity"),
 	quantityIncrementor("qty-incrementor",ID,"Product Details Page - Product Incrementor"),
 	btnAddToCart("//div[@class='actions']/button[@title='Add to Cart']",XPATH,"Product Details Page - Button Add to Cart"),
-	msgProductAdded("(//div[@class='messages']/div/div)[1]",XPATH,"Product Details Page - Product Added to Cart Message"),
+	msgProductAdded("((//div[@class='messages'])[1]",XPATH,"Product Details Page - Product Added to Cart Message"),
 	
 	lnkWishList("//a[@data-action='add-to-wishlist']",XPATH,"Product Details Page - Link - Wish List"),
 	msgProductAddedtoWishList("//div[@class='message-success success message']/div",XPATH,"Product Details page - Message - Product Added to Wish List"),
