@@ -1206,6 +1206,7 @@ public class HomePageComponents extends ReusableLibrary {
 				Thread.sleep(10000);
 				//commonFunction.clickIfElementPresentJavaScript(getPageElement(HomePageObjects.btnStartAnAdventure),
 						//HomePageObjects.btnStartAnAdventure.getObjectname());	
+				driver.navigate().refresh();
 				commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.btnStartAnAdventure),
 						HomePageObjects.btnStartAnAdventure.getObjectname());
 				Thread.sleep(10000);
