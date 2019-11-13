@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import supportlibraries.ReusableLibrary;
@@ -284,6 +285,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			driver.findElement(By.xpath("//*[@id='product-addtocart-button']")).click();
 			//commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.btnAddToCart), ProductDetailsPageObjects.btnAddToCart.getObjectname());
 			Thread.sleep(8000);
+			driver.switchTo().activeElement().sendKeys(Keys.HOME);
 			if(!driver.getTestParameters().getBrowser().getValue().contains("IE")) {
 			if(commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.msgProductAdded), ProductDetailsPageObjects.msgProductAdded.getObjectname())) {
 				report.updateTestLog("Verify Product Added to the cart",
