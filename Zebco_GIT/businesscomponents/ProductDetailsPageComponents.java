@@ -174,11 +174,11 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainImage), ProductDetailsPageObjects.productMainImage.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productMainStarRating), ProductDetailsPageObjects.productMainStarRating.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productRatingInNumber), ProductDetailsPageObjects.productRatingInNumber.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.ProductReviewCountlink), ProductDetailsPageObjects.ProductReviewCountlink.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.ProductReviewCountlink), ProductDetailsPageObjects.ProductReviewCountlink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.writeAReviewLink), ProductDetailsPageObjects.writeAReviewLink.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.titleQAndA), ProductDetailsPageObjects.titleQAndA.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.divQuestionAnsweredCount), ProductDetailsPageObjects.divQuestionAnsweredCount.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.answeredQuestionLink), ProductDetailsPageObjects.answeredQuestionLink.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.titleQAndA), ProductDetailsPageObjects.titleQAndA.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.divQuestionAnsweredCount), ProductDetailsPageObjects.divQuestionAnsweredCount.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.answeredQuestionLink), ProductDetailsPageObjects.answeredQuestionLink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.askAQuestionLink), ProductDetailsPageObjects.askAQuestionLink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.viewStoreLocationlink), ProductDetailsPageObjects.viewStoreLocationlink.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.productPrice), ProductDetailsPageObjects.productPrice.getObjectname());
@@ -303,7 +303,7 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	
 	public void validateShoppingCartOverlayAndNavigateToShoppingCart() {
 		try {
-			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
+			//commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.miniCartIcon), ProductDetailsPageObjects.miniCartIcon.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.miniCartItemCountMsg), ProductDetailsPageObjects.miniCartItemCountMsg.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.miniCartProductName), ProductDetailsPageObjects.miniCartProductName.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.miniCartProductImage), ProductDetailsPageObjects.miniCartProductImage.getObjectname());
