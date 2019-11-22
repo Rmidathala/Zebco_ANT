@@ -142,7 +142,7 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.productSubTotal), ShoppingCartPageObjects.productSubTotal.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.btnEditParameters), ShoppingCartPageObjects.btnEditParameters.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.btnremoveProduct), ShoppingCartPageObjects.btnremoveProduct.getObjectname());
-			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.lnkMoveToWishList), ShoppingCartPageObjects.lnkMoveToWishList.getObjectname());
+			//commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.lnkMoveToWishList), ShoppingCartPageObjects.lnkMoveToWishList.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.btnUpdateShoppingCart), ShoppingCartPageObjects.btnUpdateShoppingCart.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.titleSummary), ShoppingCartPageObjects.titleSummary.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.estimateShippingTaxSection), ShoppingCartPageObjects.estimateShippingTaxSection.getObjectname());

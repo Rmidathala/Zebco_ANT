@@ -576,8 +576,8 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 	
 	public void validateMiniCart() {
 		try {
-			commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.iconMiniCart),
-					ProductDetailsPageObjects.iconMiniCart.getObjectname());
+			//commonFunction.clickIfElementPresent(getPageElement(ProductDetailsPageObjects.iconMiniCart),
+					//ProductDetailsPageObjects.iconMiniCart.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.miniCartItemCountMsg), ProductDetailsPageObjects.miniCartItemCountMsg.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.miniCartProductName), ProductDetailsPageObjects.miniCartProductName.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.miniCartProductImage), ProductDetailsPageObjects.miniCartProductImage.getObjectname());
