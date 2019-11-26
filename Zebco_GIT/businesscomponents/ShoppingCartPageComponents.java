@@ -261,7 +261,7 @@ public class ShoppingCartPageComponents extends ReusableLibrary {
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.estimateShippingTaxSection), ShoppingCartPageObjects.estimateShippingTaxSection.getObjectname());
 			commonFunction.selectAnyElement(getPageElement(ShoppingCartPageObjects.drpDownState), state, ShoppingCartPageObjects.drpDownState.getObjectname());
 			commonFunction.clearAndEnterTextTabOut(getPageElement(ShoppingCartPageObjects.txtBoxZipCode), zipCode, ShoppingCartPageObjects.txtBoxZipCode.getObjectname());
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 			commonFunction.clickIfElementPresent(getPageElement(ShoppingCartPageObjects.radioBtnGroundShipping), ShoppingCartPageObjects.radioBtnGroundShipping.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.lblSubtotalSummarySection), ShoppingCartPageObjects.lblSubtotalSummarySection.getObjectname());
 			commonFunction.verifyIfElementIsPresent(getPageElement(ShoppingCartPageObjects.priceSubTotalSummarySection), ShoppingCartPageObjects.priceSubTotalSummarySection.getObjectname());
