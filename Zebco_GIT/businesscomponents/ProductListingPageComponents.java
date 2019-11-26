@@ -213,7 +213,7 @@ public class ProductListingPageComponents extends ReusableLibrary {
 	public void navigateToGroupedProduct() {
 		try {
 			
-			//commonFunction.scrollIntoView(getPageElement(ProductListingPageObjects.card1ProductName));
+			commonFunction.scrollIntoView(getPageElement(ProductListingPageObjects.card1ProductName));
 			commonFunction.mouseOver(getPageElement(ProductListingPageObjects.card1ProductName),ProductListingPageObjects.card1ProductName.getObjectname() );
 			commonFunction.clickIfElementPresent(getPageElement(ProductListingPageObjects.Card1ShopNowBtn), ProductListingPageObjects.Card1ShopNowBtn.getObjectname());
 			if (commonFunction.verifyIfElementIsPresent(getPageElement(ProductDetailsPageObjects.btnAddToCart),
