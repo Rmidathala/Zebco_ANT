@@ -1452,7 +1452,8 @@ public class HomePageComponents extends ReusableLibrary {
 					report.updateTestLog("Home Page - Adventure Tab validation",
 							"Start and adventure button is clickable", Status.PASS);
 				
-			}catch(Exception e) {
+			}
+			catch(Exception e) {
 				report.updateTestLog("Home Page - Adventure Tab validation", "Something went wrong!" + e.toString(),
 						Status.FAIL);
 			}

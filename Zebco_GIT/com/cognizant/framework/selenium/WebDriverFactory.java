@@ -19,7 +19,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
+//import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.*;
 
 import com.cognizant.framework.FrameworkException;
@@ -101,7 +101,7 @@ public class WebDriverFactory {
 			// Takes the system proxy settings automatically (I think!)
 
 			System.setProperty("phantomjs.binary.path", properties.getProperty("PhantomJSPath"));
-			driver = new PhantomJSDriver();
+			//driver = new PhantomJSDriver();
 			break;
 
 		/*
