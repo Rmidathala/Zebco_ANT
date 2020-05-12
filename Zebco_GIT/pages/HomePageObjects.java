@@ -189,6 +189,9 @@ public enum HomePageObjects implements PageObjects {
 	
 	iconAccount_STG("//span[@class='action toggle']",XPATH,"Home Page - Header - Account icon"),
 	lnkMyAccount_STG("//div[@class='customer-menu']/ul/li[1]/a",XPATH,"Home Page - Header - Account - My Account link"),
+	
+	
+	buttonClosePopup("//button[@class='mfp-close']",XPATH,"Home Page - popup - close button"),
 		;
 
 

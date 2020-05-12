@@ -1458,6 +1458,23 @@ public class HomePageComponents extends ReusableLibrary {
 						Status.FAIL);
 			}
 			}
+		public void closeCovidPopup() {
+			try {
+				if(commonFunction.verifyIfElementIsPresent(getPageElement(HomePageObjects.buttonClosePopup), 
+						HomePageObjects.buttonClosePopup.getObjectname())) {
+					commonFunction.clickIfElementPresent(getPageElement(HomePageObjects.buttonClosePopup),
+							HomePageObjects.buttonClosePopup.getObjectname());
+					report.updateTestLog("Verify pop up is closed",
+							"Pop up is closed", Status.PASS);
+			
+			}
+		}
+			catch(Exception e) {
+				report.updateTestLog("Verify if popup is displayed", "Pop up not displayed" ,
+						Status.PASS);
+			}
+		}
+			
 		
 }
 
