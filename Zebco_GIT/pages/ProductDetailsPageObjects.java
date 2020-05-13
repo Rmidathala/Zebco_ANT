@@ -150,6 +150,8 @@ public enum ProductDetailsPageObjects implements PageObjects{
 	miniCartCounterqty("(//*[@class='counter qty'])[1]",XPATH,"Product Details Page - Mini Cart Icon"),
 	
 	
+	drpdwnSizeGroupProd("//*[@id='grouped-configurable-grouped-attr-size']",XPATH,"Grouped Product - select size"),
+	drpdwnLengthGroupProd("//*[@id='grouped-configurable-grouped-attr-length']",XPATH,"Grouped Product - select length"),
 	
 	
 	

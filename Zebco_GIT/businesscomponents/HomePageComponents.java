@@ -1474,7 +1474,22 @@ public class HomePageComponents extends ReusableLibrary {
 						Status.PASS);
 			}
 		}
-			
+		public void navigateToURL() {
+			try {
+				String url = dataTable.getData("General_Data","URL");
+				driver.navigate().to(url);
+				if(driver.getCurrentUrl().contains(url)) {
+					report.updateTestLog("Verify user navigated to the Product URL:"+url, "User is successfully Navigated to the URL:"+url,
+							Status.PASS);
+				} else {
+					report.updateTestLog("Verify user navigated to the Product URL:"+url, "User is NOT Navigated to the URL:"+url,
+							Status.FAIL);
+				}
+			}catch(Exception e) {
+				report.updateTestLog("Validate navigateion  to the URL", "Something went wrong!" + e.toString(),
+						Status.FAIL);
+			}
+		}		
 		
 }
 

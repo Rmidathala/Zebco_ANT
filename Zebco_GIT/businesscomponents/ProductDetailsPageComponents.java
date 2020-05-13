@@ -20,6 +20,9 @@ import pages.LoginPageObjects;
 import pages.ProductDetailsPageObjects;
 import pages.ShoppingCartPageObjects;
 
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.By;
+
 
 public class ProductDetailsPageComponents extends ReusableLibrary {
 
@@ -628,4 +631,16 @@ public class ProductDetailsPageComponents extends ReusableLibrary {
 			report.updateTestLog("Navigate To Shopping Cart Page", "Something went wrong!" + e.toString(), Status.FAIL);
 		}
 	}
+	public void selectSizeLengthGroupedProduct() {
+		try {
+			
+			Select drpSize= new Select(driver.findElement(By.xpath("//*[@id='grouped-configurable-grouped-attr-size']")));
+			drpSize.selectByIndex(1);
+			Select drpLength= new Select(driver.findElement(By.xpath("//*[@id='grouped-configurable-grouped-attr-length']")));
+			drpLength.selectByIndex(1);
+			}
+		catch(Exception e) {
+			report.updateTestLog("Select size and legth", "Something went wrong!" + e.toString(), Status.FAIL);
+	}
+}
 }
